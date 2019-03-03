@@ -1,0 +1,10 @@
+E:\GitRepo\HelloWorld2\HelloWorld2\bin\Debug\netcoreapp2.1\HelloWorld2.deps.json
+E:\GitRepo\HelloWorld2\HelloWorld2\bin\Debug\netcoreapp2.1\HelloWorld2.runtimeconfig.json
+E:\GitRepo\HelloWorld2\HelloWorld2\bin\Debug\netcoreapp2.1\HelloWorld2.runtimeconfig.dev.json
+E:\GitRepo\HelloWorld2\HelloWorld2\bin\Debug\netcoreapp2.1\HelloWorld2.dll
+E:\GitRepo\HelloWorld2\HelloWorld2\bin\Debug\netcoreapp2.1\HelloWorld2.pdb
+E:\GitRepo\HelloWorld2\HelloWorld2\obj\Debug\netcoreapp2.1\HelloWorld2.csproj.CoreCompileInputs.cache
+E:\GitRepo\HelloWorld2\HelloWorld2\obj\Debug\netcoreapp2.1\HelloWorld2.AssemblyInfoInputs.cache
+E:\GitRepo\HelloWorld2\HelloWorld2\obj\Debug\netcoreapp2.1\HelloWorld2.AssemblyInfo.cs
+E:\GitRepo\HelloWorld2\HelloWorld2\obj\Debug\netcoreapp2.1\HelloWorld2.dll
+E:\GitRepo\HelloWorld2\HelloWorld2\obj\Debug\netcoreapp2.1\HelloWorld2.pdb
