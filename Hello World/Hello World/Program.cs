@@ -4,7 +4,7 @@ namespace HelloWorld
 {
     class HelloWorld
     {
-        public void Hello()
+        public static void Hello()
         {
             Console.WriteLine("Hello World!");
         }
@@ -13,8 +13,7 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            HelloWorld v = new HelloWorld();
-            v.Hello();
+            HelloWorld.Hello();
         }
     }
 }
