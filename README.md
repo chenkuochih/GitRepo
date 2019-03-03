@@ -1,9 +1,9 @@
 # GitRepo
 WPF的Hello World！
 -------
-<br>
-* WPF的xaml文件内容
-<br>
+<br />
+####WPF的xaml文件内容
+<br />
 ```c#
 <Window x:Class="WpfHelloWorld.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -20,7 +20,7 @@ WPF的Hello World！
 </Window>
 ```
 <br>
-* WPF的cs文件内容
+####WPF的cs文件内容
 ```c#
     public partial class MainWindow : Window
     {
@@ -36,8 +36,7 @@ WPF的Hello World！
 }
 ```
 <br>
-代码执行结果
--------
+####代码执行结果
 <br>
 ![HelloWorld!](https://github.com/chenkuochih/GitRepo/blob/master/WPF的HelloWorld%EF%BC%81运行结果%EF%BC%881%EF%BC%89.png)
 ![HelloWorld!](https://github.com/chenkuochih/GitRepo/blob/master/WPF的HelloWorld%EF%BC%81运行结果%EF%BC%882%EF%BC%89.png)
