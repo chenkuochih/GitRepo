@@ -2,7 +2,7 @@
 WPF的Hello World！
 -------
 ### WPF的xaml文件内容 <br />
-                <Window x:Class="WpfApp1.MainWindow"
+     <Window x:Class="WpfApp1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -21,7 +21,7 @@ WPF的Hello World！
                    TextWrapping="Wrap" Text="命令行参数为：" TextAlignment="Center" FontSize="22"
                    Height="30" Width="772" Name="textBlock2" Foreground="BlueViolet" FontWeight="Bold" FontFamily="./#仿宋_GB2312"/>
     </Grid>
-</Window>
+    </Window>
 ### WPF的cs文件内容 <br/>
     public partial class MainWindow : Window
     {
