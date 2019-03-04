@@ -39,6 +39,27 @@
     }
 <br />
 
+2.实例化的Hello World！
+-------
+### 思路：
+     new一个对象，通过对象调用方法输出Hello World！
+### 代码如下 <br />
+     class HelloWorld
+    {
+        public void Hello()
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            HelloWorld v = new HelloWorld();
+            v.Hello();
+        }
+    }
+<br />
 
 3.WPF的Hello World！
 -------
