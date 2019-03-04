@@ -1,5 +1,46 @@
-# GitRepo
-WPF的Hello World！
+# 第一次作业
+### 思路 <br />
+     添加一行Console.ResetColor();将所有设置的样式清除
+### 代码如下 <br />
+     static void Main(string[] args)
+        {
+            System.Console.WriteLine("Hello World! {0} is {1}",args[0],args[1]);
+            Console.BackgroundColor = ConsoleColor.Green;
+            System.Console.WriteLine("Hello World!");
+            System.Console.WriteLine("Hello World!");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            System.Console.WriteLine("Hello World!");
+            Console.ResetColor();
+            System.Console.WriteLine("Hello World!");
+            Console.ReadKey();
+        }
+
+<br />
+
+# 第二次作业
+1.无实例化的Hello World！
+-------
+### 思路：
+     用public修饰的static成员变量和成员方法本质是全局变量和全局方法。
+### 代码如下 <br />
+     class HelloWorld
+     {
+            public static void Hello()
+           {
+             Console.WriteLine("Hello World!");
+           }
+       }
+      class Program
+      {
+          static void Main(string[] args)
+          {
+                 HelloWorld.Hello();
+           }
+    }
+<br />
+
+
+3.WPF的Hello World！
 -------
 ### WPF的xaml文件内容 <br />
      <Window x:Class="WpfApp1.MainWindow"
@@ -56,6 +97,6 @@ WPF的Hello World！
     }
 
 ### 代码执行结果 <br />
+![命令行参数](https://github.com/chenkuochih/GitRepo/blob/master/WPF的命令行输入.png)
 ![HelloWorld!](https://github.com/chenkuochih/GitRepo/blob/master/WPF的HelloWorld%EF%BC%81运行结果%EF%BC%881%EF%BC%89.png)
 ![HelloWorld!](https://github.com/chenkuochih/GitRepo/blob/master/WPF的HelloWorld%EF%BC%81运行结果%EF%BC%882%EF%BC%89.png)
-![命令行参数](https://github.com/chenkuochih/GitRepo/blob/master/WPF的命令行输入.png)
