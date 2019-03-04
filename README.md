@@ -31,3 +31,4 @@ WPF的Hello World！
 ### 代码执行结果 <br />
 ![HelloWorld!](https://github.com/chenkuochih/GitRepo/blob/master/WPF的HelloWorld%EF%BC%81运行结果%EF%BC%881%EF%BC%89.png)
 ![HelloWorld!](https://github.com/chenkuochih/GitRepo/blob/master/WPF的HelloWorld%EF%BC%81运行结果%EF%BC%882%EF%BC%89.png)
+![命令行参数](https://github.com/chenkuochih/GitRepo/blob/master/WPF的命令行输入.png)
