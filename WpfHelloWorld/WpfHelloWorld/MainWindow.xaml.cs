@@ -28,14 +28,5 @@ namespace WpfHelloWorld
         {
             textBlock1.Visibility = Visibility.Visible;
         }
-        private void Application_Startup(object sender, StartupEventArgs e)
-        {
-            string s = string.Empty;
-            for (int i = 0; i < e.Args.Length; i++)
-            {
-                s += e.Args[i] + " ";
-            }
-            MessageBox.Show(s);
-        }
     }
 }
