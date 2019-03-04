@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfHelloWorld
+namespace WpfApp1
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
@@ -23,8 +23,28 @@ namespace WpfHelloWorld
         public MainWindow()
         {
             InitializeComponent();
+            Text();
         }
-        private void button1_Click(object sender, RoutedEventArgs e)
+
+        private void Text()
+        {
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length == 1)
+            {
+                textBlock2.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                string s = textBlock2.Text;
+                for (int i = 1; i < args.Length; i++)
+                {
+                    s += args[i] + " ";
+                }
+                textBlock2.Text = s;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             textBlock1.Visibility = Visibility.Visible;
         }
