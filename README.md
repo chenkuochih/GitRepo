@@ -121,3 +121,53 @@
 ![命令行参数](https://github.com/chenkuochih/GitRepo/blob/master/WPF的命令行输入.png)
 ![HelloWorld!](https://github.com/chenkuochih/GitRepo/blob/master/WPF的HelloWorld%EF%BC%81运行结果%EF%BC%881%EF%BC%89.png)
 ![HelloWorld!](https://github.com/chenkuochih/GitRepo/blob/master/WPF的HelloWorld%EF%BC%81运行结果%EF%BC%882%EF%BC%89.png)
+<br />
+
+4.WindowsForm中创建新类输出Hello World！
+------
+### 思路：
+     使用工具栏添加了一个textbox和两个button，并更改其属性。创造两个类，一个类输出中文：你好，世界。另一个输出英文Hello World!。再在两个button的代码域内调用。最后效果：按下Chinese输出中文：你好，世界。按下English输出Hello World!
+### 代码如下 <br />
+     public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Chinese_button_Click(object sender, EventArgs e)
+        {
+            this.display.Text = HelloWorld2.Hello();
+        }
+
+        private void English_button_Click(object sender, EventArgs e)
+        {
+            this.display.Text = HelloWorld1.Hello();
+        }
+    }
+    public class HelloWorld1
+    {
+        public static string Hello()
+        {
+            return "Hello World!";
+        }
+    }
+    public class HelloWorld2
+    {
+        public static string Hello()
+        {
+            return "你好，世界！";
+        }
+    }
+![代码结果](https://github.com/chenkuochih/GitRepo/blob/master/WindowsForm中创建新类输出Hello%20World%EF%BC%81(1).png)
+![中文：你好，世界！](https://github.com/chenkuochih/GitRepo/blob/master/WindowsForm中创建新类输出Hello%20World%EF%BC%81(2).png)
+![英文：Hello World！](https://github.com/chenkuochih/GitRepo/blob/master/WindowsForm中创建新类输出Hello%20World%EF%BC%81(3).png)
+<br />
