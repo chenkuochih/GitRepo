@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsQr", "WindowsFormsQr\WindowsFormsQr.csproj", "{437BE196-1DF1-40F7-9A84-61AAFEFE73DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{437BE196-1DF1-40F7-9A84-61AAFEFE73DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{437BE196-1DF1-40F7-9A84-61AAFEFE73DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{437BE196-1DF1-40F7-9A84-61AAFEFE73DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{437BE196-1DF1-40F7-9A84-61AAFEFE73DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31AA488C-4B5D-4BD0-84D0-310E977C17C1}
+	EndGlobalSection
+EndGlobal
