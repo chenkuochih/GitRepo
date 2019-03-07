@@ -24,7 +24,7 @@ namespace WindowsFormsApplication1
             string sampleText = textBox1.Text;
             if (sampleText.Length > 30)
             {
-                message_lable.Text = "字符长度大于30，请重新输入！";
+                message_lable.Text = "字符长度大于30，请重新输入！";//限制输入的字符个数
             }
             else if (sampleText.Length == 0)
             {
@@ -50,7 +50,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void 二维码另存为ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Click(object sender, EventArgs e)//二维码另存为（右键）
         {
             if (pictureBox1 .Image!=null)
             {
@@ -85,6 +85,7 @@ namespace WindowsFormsApplication1
             QRCodeDecoder qrDecoder = new QRCodeDecoder();
             string msg= qrDecoder.decode(new QRCodeBitmapImage(new Bitmap(pictureBox1.Image)), Encoding.UTF8);
             textBox1.Text = msg;
+            textBox1.ForeColor = Color.Blue;//解码后的文字颜色
             MessageBox.Show("解析完成");
         }
 
@@ -102,6 +103,21 @@ namespace WindowsFormsApplication1
             pictureBox1.Image = null;//单击文本框二维码消失
             textBox1.ForeColor = Color.Black;//为了让文本框的文本颜色与注释不相同
             message_lable.Text = "";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                SaveFileDialog s = new SaveFileDialog();
+                s.Title = "保存二维码图片";
+                s.Filter = "图片文件(*.jpg)|*.jpg";
+                if (s.ShowDialog() == DialogResult.OK)
+                {
+                    pictureBox1.Image.Save(s.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    MessageBox.Show("保存成功");
+                }
+            }
         }
     }
 }
