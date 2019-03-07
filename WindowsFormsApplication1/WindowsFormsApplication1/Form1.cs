@@ -68,7 +68,7 @@ namespace WindowsFormsApplication1
         string filename = string.Empty;
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog p = new OpenFileDialog();
+            OpenFileDialog p = new OpenFileDialog();//打开文件对话框
             p.Title = "请选择二维码图片";
             p.Filter = "图片格式(*.jpg)|*.jpg";
             p.Multiselect = false;
@@ -94,9 +94,11 @@ namespace WindowsFormsApplication1
 
         }
 
+        
+
         private void textbox1_click(object sender, EventArgs e)
         {
-            if(message_lable.Text.Length == 0)
+            if (message_lable.Text.Length == 0 && textBox1.ForeColor != Color.Black)
             {
                 textBox1.Text = "";
             }
@@ -105,7 +107,7 @@ namespace WindowsFormsApplication1
             message_lable.Text = "";
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)//二维码另存为（点击按钮）
         {
             if (pictureBox1.Image != null)
             {
@@ -118,6 +120,32 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("保存成功");
                 }
             }
+            else
+            {
+                MessageBox.Show("没有任何二维码图片");
+            }
+        }
+        private void One_Click()//当textBox1为空时单击出现提示字
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "请输入长度小于30的字节";
+                textBox1.ForeColor = Color.DarkGray;
+            }
+        }
+        private void Form1_Click(object sender, EventArgs e)
+        {
+            //if(textBox1.Text == "")
+            //{
+            //    textBox1.Text = "请输入长度小于30的字节";
+            //    textBox1.ForeColor = Color.DarkGray;
+            //}           
+            One_Click();//当textBox1为空时单击Form1出现提示字
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            One_Click();//当textBox1为空时单击pictureBox1出现提示字
         }
     }
 }

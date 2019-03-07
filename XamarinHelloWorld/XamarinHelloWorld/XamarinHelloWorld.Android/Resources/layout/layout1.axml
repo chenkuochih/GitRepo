@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:minWidth="200dp"
+    android:padding="10dp"
+    android:paddingTop="30dp"
+    android:paddingBottom="30dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textColor="blue"
+     android:textAlignment="center"
+android:textSize="50px"
+      android:hint="我爱C#!!"
+      android:minHeight="45dp" />
+
+  <!--<ImageView
+      android:src="@android:color/holo_blue_light"
+      android:layout_width="match_parent"
+      android:layout_height="200dp" />-->
+
+  <!--<Button
+      android:text="提交"
+      android:minHeight="45dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />-->
+
+</LinearLayout>
