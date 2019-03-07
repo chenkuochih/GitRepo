@@ -176,5 +176,6 @@
 5.Xamarin.form输出Hello World！
 ------
 ![最后一个HelloWorld](https://github.com/chenkuochih/GitRepo/blob/master/运行结果截图/作业二的第五个要求代码截图.png)
+
      这个代码！！！因为那个安卓机一直出不来所以无法看到代码效果，拖了好几天问老师才解决。
      本来想加一个点击按钮出弹窗，但是由于找了很久的资料也没看明白，所以就变成一个调皮的弹窗了。
