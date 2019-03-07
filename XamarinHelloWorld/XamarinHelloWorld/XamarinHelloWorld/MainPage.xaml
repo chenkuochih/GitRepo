@@ -6,14 +6,14 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Hello C#!!"
+        <Label Text="Hello World!"
                TextColor="Blue"
                FontSize="18"
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
-        <Button Text="点击一下"
+        <Button Text="点击一下，啥事都不会发生"
                 FontSize="14"
-                Clicked="Button_Clicked" />
+                 />
     </StackLayout>
 
 </ContentPage>
