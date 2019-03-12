@@ -354,6 +354,14 @@ namespace SequencerDemo
         {
             this.Resize += new EventHandler(Form1_Resize);
         }
-
+        private void quit_button_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(this, "Are you sure you want to quit the program? ", "Closing prompt ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                //this.Close();
+                System.Environment.Exit(0);//这是最彻底的退出方式，不管什么线程都被强制退出，把程序结束的很干净。
+            }
+        }
     }
 }

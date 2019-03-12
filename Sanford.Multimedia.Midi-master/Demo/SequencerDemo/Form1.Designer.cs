@@ -52,17 +52,15 @@ namespace SequencerDemo
             this.pianoControl1 = new Sanford.Multimedia.Midi.UI.PianoControl();
             this.sequence1 = new Sanford.Multimedia.Midi.Sequence();
             this.sequencer1 = new Sanford.Multimedia.Midi.Sequencer();
+            this.quit_button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // stopButton
             // 
-            this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.stopButton.Font = new System.Drawing.Font("свт╡", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.stopButton.Location = new System.Drawing.Point(115, 91);
+            this.stopButton.Location = new System.Drawing.Point(115, 105);
             this.stopButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(100, 26);
@@ -73,11 +71,8 @@ namespace SequencerDemo
             // 
             // startButton
             // 
-            this.startButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.startButton.Font = new System.Drawing.Font("свт╡", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.startButton.Location = new System.Drawing.Point(247, 91);
+            this.startButton.Location = new System.Drawing.Point(376, 105);
             this.startButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(100, 26);
@@ -88,11 +83,8 @@ namespace SequencerDemo
             // 
             // continueButton
             // 
-            this.continueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.continueButton.Font = new System.Drawing.Font("свт╡", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.continueButton.Location = new System.Drawing.Point(381, 91);
+            this.continueButton.Location = new System.Drawing.Point(115, 177);
             this.continueButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.continueButton.Name = "continueButton";
             this.continueButton.Size = new System.Drawing.Size(100, 26);
@@ -103,12 +95,9 @@ namespace SequencerDemo
             // 
             // positionHScrollBar
             // 
-            this.positionHScrollBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.positionHScrollBar.Location = new System.Drawing.Point(16, 52);
             this.positionHScrollBar.Name = "positionHScrollBar";
-            this.positionHScrollBar.Size = new System.Drawing.Size(565, 23);
+            this.positionHScrollBar.Size = new System.Drawing.Size(560, 30);
             this.positionHScrollBar.TabIndex = 3;
             this.positionHScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.positionHScrollBar_Scroll);
             // 
@@ -122,7 +111,7 @@ namespace SequencerDemo
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(721, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(927, 28);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -181,7 +170,7 @@ namespace SequencerDemo
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
             this.aboutToolStripMenuItem.Text = "&About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -199,7 +188,7 @@ namespace SequencerDemo
             this.statusStrip1.Location = new System.Drawing.Point(0, 415);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(721, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(927, 26);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -215,12 +204,9 @@ namespace SequencerDemo
             // 
             // pianoControl1
             // 
-            this.pianoControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pianoControl1.BackColor = System.Drawing.SystemColors.Control;
             this.pianoControl1.HighNoteID = 109;
-            this.pianoControl1.Location = new System.Drawing.Point(13, 326);
+            this.pianoControl1.Location = new System.Drawing.Point(16, 364);
             this.pianoControl1.LowNoteID = 21;
             this.pianoControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pianoControl1.Name = "pianoControl1";
@@ -245,12 +231,24 @@ namespace SequencerDemo
             this.sequencer1.Chased += new System.EventHandler<Sanford.Multimedia.Midi.ChasedEventArgs>(this.HandleChased);
             this.sequencer1.Stopped += new System.EventHandler<Sanford.Multimedia.Midi.StoppedEventArgs>(this.HandleStopped);
             // 
+            // quit_button
+            // 
+            this.quit_button.Font = new System.Drawing.Font("свт╡", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.quit_button.Location = new System.Drawing.Point(376, 177);
+            this.quit_button.Name = "quit_button";
+            this.quit_button.Size = new System.Drawing.Size(100, 26);
+            this.quit_button.TabIndex = 7;
+            this.quit_button.Text = " quit";
+            this.quit_button.UseVisualStyleBackColor = true;
+            this.quit_button.Click += new System.EventHandler(this.quit_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(721, 441);
+            this.ClientSize = new System.Drawing.Size(927, 441);
+            this.Controls.Add(this.quit_button);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pianoControl1);
             this.Controls.Add(this.positionHScrollBar);
@@ -296,6 +294,7 @@ namespace SequencerDemo
         private Sequence sequence1;
         private Sequencer sequencer1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button quit_button;
     }
 }
 
