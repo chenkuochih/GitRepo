@@ -1,3 +1,90 @@
+# 第一次实验
+### 实验需求 <br />
+     在命令行里传递一个文件名，该文件是文本文件，文件中每行有一条字符串信息，用于生成QrCode.并保存到.png或bmp文件中，保存的文件名以信息所在行号三位数+信息的前四个字符构成。命令行可以是myqrcode -fqrcode.txt。 -f表示qrcode信息在后面的qrcode.txt文件中。如果没有-f则以现在的方式在控制台输出qrcode.
+### 代码分析 <br />
+Read(string args)的作用是从命令行读取参数，以便于后面判断是否有-f
+-------------
+     public static string[] Read(string args)
+        {
+            StreamReader srReadFile = new StreamReader(args);
+            // 读取流直至文件末尾结束
+            int line = 0;
+            string[] strReadLine = new string[100];
+            while (!srReadFile.EndOfStream)
+            {
+                strReadLine[line] = srReadFile.ReadLine(); //读取每行数据
+                line++;
+                //Console.WriteLine(strReadLine); //屏幕打印每行数据
+            }
+            // 关闭读取流文件
+            srReadFile.Close();
+            return strReadLine;
+        }
+
+printQrEncoder(string args)的作用是在控制台打印二维码
+------------
+     public static void printQrEncoder(string args)
+        {
+            string[] SampleText = new string[100];
+            SampleText = Read(args);
+            for (int i = 0; SampleText[i] != null; i++)
+            {
+                if (SampleText[i].Length < 30 && SampleText[i].Length > 0)
+                {
+                    QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.M);
+                    QrCode qrCode = qrEncoder.Encode(SampleText[i]);
+                    for (int j = 0; j < qrCode.Matrix.Width; j++)
+                    {
+                        for (int k = 0; k < qrCode.Matrix.Width; k++)
+                        {
+                            char charToPrint = qrCode.Matrix[k, j] ? '□' : '■';
+                            Console.Write(charToPrint);
+                        }
+                        Console.WriteLine();
+                    }
+                    Console.WriteLine();
+                }
+            }
+        }
+
+GenQrCode(string args)的作用是，生成二维码，并保存图片到指定路径下
+----------------
+        <param name="fileName">图片保存路径全名（包括路径和文件名）</param>
+        <param name="content">要生成二维码的内容</param>
+        public static void GenQrCode(string args)
+        {
+            //Console.WriteLine(args);
+            string[] SampleText = new string[1000];
+            SampleText = Read(args);
+            Console.WriteLine("请输入要保存的文件路径：");
+            String fileName2 = CreateFile();
+            if (!Directory.Exists(fileName2))
+            {
+                Directory.CreateDirectory(fileName2);
+            }
+            if (SampleText != null)
+            {
+                for (int i = 0; SampleText[i]!=null; i++)
+                {
+                    //Console.WriteLine(i);
+                    string Name = SampleText[i];
+                    string fileName;
+                    if (Name.Length <= 30 && Name.Length > 0)//限制条件
+                    {
+                        fileName = fileName2 + ThreeDigits(i+1) + Name.Substring(0, 4) + ".bmp";
+                        var qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
+                        var qrCode = qrEncoder.Encode(SampleText[i]);//生成二维码
+                        GraphicsRenderer gRender = new GraphicsRenderer(new FixedModuleSize(30, QuietZoneModules.Four));
+                        using (FileStream stream = new FileStream(fileName, FileMode.Create))
+                        {
+                            gRender.WriteToStream(qrCode.Matrix, ImageFormat.Bmp, stream, new Point(600, 600));//生成图片
+                        }
+                    }
+                }
+            }     
+        }
+
+
 # 第一次作业
 ### 思路 <br />
      添加一行Console.ResetColor();将所有设置的样式清除
