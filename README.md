@@ -1,7 +1,11 @@
 # 第一次实验
-### 实验需求 <br />
+## 实验需求 <br />
      在命令行里传递一个文件名，该文件是文本文件，文件中每行有一条字符串信息，用于生成QrCode.并保存到.png或bmp文件中，保存的文件名以信息所在行号三位数+信息的前四个字符构成。命令行可以是myqrcode -fqrcode.txt。 -f表示qrcode信息在后面的qrcode.txt文件中。如果没有-f则以现在的方式在控制台输出qrcode.
-### 代码分析 <br />
+## 完成度 <br />
+    （1）根据-f的有无以及参数的有无，分别有不同的输出情况。无参数：输出用户输入提示。有-f：根据-f后的txt文件生成二维码图片，并根据输入的文件目录保存到本地。没有-f：在控制台打印二维码。
+    （2）改进：没有-f时有两种情况。一：根据传入的文件路径读取传入的文件的内容，并将文件内容以二维码的方式输出。二：直接打印传入的命令行参数。具体使用哪种情况视用户的选择而定。
+    
+## 代码分析 <br />
 Read(string args)的作用是从命令行读取参数，以便于后面判断是否有-f
 -------------
      public static string[] Read(string args)
@@ -21,7 +25,7 @@ Read(string args)的作用是从命令行读取参数，以便于后面判断是
             return strReadLine;
         }
 
-printQrEncoder(string args)的作用是在控制台打印二维码
+printQrEncoder(string args)的作用是在控制台打印文本中的二维码
 ------------
      public static void printQrEncoder(string args)
         {
@@ -46,8 +50,28 @@ printQrEncoder(string args)的作用是在控制台打印二维码
                 }
             }
         }
-
-GenQrCode(string args)的作用是，生成二维码，并保存图片到指定路径下
+printQrEncoder2(string args)的作用是直接生成以命令行参数为内容的二维码并打印出来
+----------------
+     public static void printQrEncoder2(string args)
+        {
+            string SampleText = args;
+            if (SampleText.Length < 30 && SampleText.Length > 0)
+            {
+                QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.M);
+                QrCode qrCode = qrEncoder.Encode(SampleText);
+                for (int j = 0; j < qrCode.Matrix.Width; j++)
+                {
+                    for (int k = 0; k < qrCode.Matrix.Width; k++)
+                    {
+                        char charToPrint = qrCode.Matrix[k, j] ? '□' : '■';
+                        Console.Write(charToPrint);
+                    }
+                    Console.WriteLine();
+                }
+                Console.WriteLine();
+            }
+        }
+GenQrCode(string args)的作用是生成二维码，并保存图片到指定路径下
 ----------------
         <param name="fileName">图片保存路径全名（包括路径和文件名）</param>
         <param name="content">要生成二维码的内容</param>
@@ -83,7 +107,14 @@ GenQrCode(string args)的作用是，生成二维码，并保存图片到指定�
                 }
             }     
         }
-
+执行结果截图
+------------
+![有-f的代码截图](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%80%E3%80%91%E6%9C%89-f%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%9C%EF%BC%881%EF%BC%89.png)
+![有-f的代码截图](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%80%E3%80%91%E6%9C%89-f%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%9C%EF%BC%882%EF%BC%89.png)
+![无-f的代码截图](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%80%E3%80%91%E6%97%A0-f%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%9C%EF%BC%881%EF%BC%89.png)
+![无-f的代码截图](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%80%E3%80%91%E6%97%A0-f%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%9C%EF%BC%882%EF%BC%89.png)
+![无参数的代码截图](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%80%E3%80%91%E6%97%A0%E5%8F%82%E6%95%B0%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%9C.png)
+<br />
 
 # 第一次作业
 ### 思路 <br />
