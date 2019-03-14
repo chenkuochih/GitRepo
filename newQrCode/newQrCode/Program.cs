@@ -56,6 +56,26 @@ namespace newQrCode
             }
         }
 
+        public static void printQrEncoder2(string args)
+        {
+            string SampleText = args;
+            if (SampleText.Length < 30 && SampleText.Length > 0)
+            {
+                QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.M);
+                QrCode qrCode = qrEncoder.Encode(SampleText);
+                for (int j = 0; j < qrCode.Matrix.Width; j++)
+                {
+                    for (int k = 0; k < qrCode.Matrix.Width; k++)
+                    {
+                        char charToPrint = qrCode.Matrix[k, j] ? '□' : '■';
+                        Console.Write(charToPrint);
+                    }
+                    Console.WriteLine();
+                }
+                Console.WriteLine();
+            }
+        }
+
         public static string ThreeDigits(int i)
         {
             if(i>0 && i < 10)
@@ -135,8 +155,8 @@ namespace newQrCode
                 Console.WriteLine("批量生成二维码图片并保存到文件夹：-f+生成二维码的字符串文件夹路径");
                 Console.WriteLine("              例：-fE:/GitRepo/myqrcode.txt");
                 Console.WriteLine();
-                Console.WriteLine("直接在控制台输入二维码：生成二维码的字符串文件夹路径");
-                Console.WriteLine("              例：E:/GitRepo/myqrcode.txt");
+                Console.WriteLine("直接在控制台输出二维码：生成二维码的字符串文件夹路径或直接输入想打印的二维码内容");
+                Console.WriteLine("              例：E:/GitRepo/myqrcode.txt或 C#真奇妙！");
             }
             //Console.WriteLine(args[0].Substring(0, 2)=="-f");
             else if (args[0].Substring(0, 2) == "-f")
@@ -146,7 +166,20 @@ namespace newQrCode
             }
             else
             {
-                printQrEncoder(args[0]);
+                Console.WriteLine("请问您输入的是文件夹路径还是字符串？");
+                Console.WriteLine("1：文件夹路径     2：字符串");
+                string strReadFilePath;
+                // 读取文件的源路径及其读取流
+                strReadFilePath = Console.ReadLine();
+                switch (strReadFilePath)
+                {
+                    case "1":
+                        printQrEncoder(args[0]);
+                        break;
+                    case "2":
+                        printQrEncoder2(args[0]);
+                        break;
+                }
                 Console.WriteLine("生成完毕");
             }
             Console.ReadKey();
