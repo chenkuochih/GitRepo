@@ -28,36 +28,14 @@ namespace newQrCode
             }
             // 关闭读取流文件
             srReadFile.Close();
-            
             return strReadLine;
         }
 
-        public static string[] Read1(string args)
-        {
-            //string strReadFilePath;
-            //// 读取文件的源路径及其读取流
-            //strReadFilePath = Console.ReadLine();
-            //StreamReader srReadFile = new StreamReader(strReadFilePath);
-            StreamReader srReadFile = new StreamReader(args);
-            // 读取流直至文件末尾结束
-            int line = 0;
-            string[] strReadLine = new string[100];
-            while (!srReadFile.EndOfStream)
-            {
-                strReadLine[line] = srReadFile.ReadLine(); //读取每行数据
-                line++;
-                //Console.WriteLine(strReadLine); //屏幕打印每行数据
-            }
-            // 关闭读取流文件
-            srReadFile.Close();
-
-            return strReadLine;
-        }
 
         public static void printQrEncoder(string args)
         {
             string[] SampleText = new string[100];
-            SampleText = Read1(args);
+            SampleText = Read(args);
             for (int i = 0; SampleText[i] != null; i++)
             {
                 if (SampleText[i].Length < 30 && SampleText[i].Length > 0)
