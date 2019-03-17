@@ -4,6 +4,8 @@
 ## 完成度 <br />
     （1）根据-f的有无以及参数的有无，分别有不同的输出情况。无参数：输出用户输入提示。有-f：根据-f后的txt文件生成二维码图片，并根据输入的文件目录保存到本地。没有-f：在控制台打印二维码。
     （2）改进：没有-f时有两种情况。一：根据传入的文件路径读取传入的文件的内容，并将文件内容以二维码的方式输出。二：直接打印传入的命令行参数。具体使用哪种情况视用户的选择而定。
+    （3）用户输入字符串长度大于30时会给予提示并安全退出。
+    （4）用户输入错误路径时会给予提示并安全退出。
     
 ## 代码分析 <br />
 Read(string args)的作用是从命令行读取参数，以便于后面判断是否有-f
@@ -47,6 +49,10 @@ printQrEncoder(string args)的作用是在控制台打印文本中的二维码
                         Console.WriteLine();
                     }
                     Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine("输入字符的长度不能大于30位！");
                 }
             }
         }
@@ -122,6 +128,17 @@ GenQrCode(string args)的作用是生成二维码，并保存图片到指定路�
 
 ### 无参数的代码截图
 ![无参数的代码截图](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%80%E3%80%91%E6%97%A0%E5%8F%82%E6%95%B0%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%9C.png)
+
+
+### 输入错误路径后的结果截图
+![输入错误路径后的结果截图](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%80%E3%80%91%E8%BE%93%E5%85%A5%E9%94%99%E8%AF%AF%E8%B7%AF%E5%BE%84%E5%90%8E%E7%9A%84%E7%BB%93%E6%9E%9C.png)
+
+### 输入长度大于三十的字符串的结果截图
+![输入长度大于三十的字符串的结果截图](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%80%E3%80%91%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E%E4%B8%89%E5%8D%81%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E7%BB%93%E6%9E%9C.png)
+
+### 输入长度等于三十的字符的结果截图
+![输入长度等于三十的字符的结果截图](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%80%E3%80%91%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6%E7%AD%89%E4%BA%8E%E4%B8%89%E5%8D%81%E7%9A%84%E5%AD%97%E7%AC%A6%E7%9A%84%E7%BB%93%E6%9E%9C.png)
+
 
 <br />
 
