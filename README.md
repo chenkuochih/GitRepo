@@ -13,6 +13,7 @@
     （3）用户输入字符串长度大于30时会给予提示并安全退出。
     （4）用户输入错误路径时会给予提示并安全退出。
     （5）生成的QrCode保存到了.png文件中，保存的文件名以信息所在行号三位数+信息的前四个字符构成。
+    （6）所有的二维码皆可扫描出结果。
 ## 代码分析 <br />
 Read(string args)的作用是从命令行读取参数，以便于后面判断是否有-f
 -------------
@@ -43,7 +44,9 @@ printQrEncoder(string args)的作用是在控制台打印文本中的二维码
             {
                 if (SampleText[i].Length < 30 && SampleText[i].Length > 0)
                 {
+                    //设置二维码的纠错级别
                     QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.M);
+                    //根据文本生成二维码
                     QrCode qrCode = qrEncoder.Encode(SampleText[i]);
                     for (int j = 0; j < qrCode.Matrix.Width; j++)
                     {
@@ -69,8 +72,10 @@ printQrEncoder2(string args)的作用是直接生成以命令行参数为内容�
             string SampleText = args;
             if (SampleText.Length < 30 && SampleText.Length > 0)
             {
-                QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.M);
-                QrCode qrCode = qrEncoder.Encode(SampleText);
+                    //设置二维码的纠错级别
+                    QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.M);
+                    //根据文本生成二维码
+                    QrCode qrCode = qrEncoder.Encode(SampleText);
                 for (int j = 0; j < qrCode.Matrix.Width; j++)
                 {
                     for (int k = 0; k < qrCode.Matrix.Width; k++)
@@ -94,10 +99,13 @@ GenQrCode(string args)的作用是生成二维码，并保存图片到指定路�
             SampleText = Read(args);
             Console.WriteLine("请输入要保存的文件路径：");
             String fileName2 = CreateFile();
+
+            //判断是否存在这个文件夹，如果不存在，主动创一个
             if (!Directory.Exists(fileName2))
             {
                 Directory.CreateDirectory(fileName2);
             }
+            
             if (SampleText != null)
             {
                 for (int i = 0; SampleText[i]!=null; i++)
@@ -105,7 +113,7 @@ GenQrCode(string args)的作用是生成二维码，并保存图片到指定路�
                     //Console.WriteLine(i);
                     string Name = SampleText[i];
                     string fileName;
-                    if (Name.Length <= 30 && Name.Length > 0)//限制条件
+                    if (Name.Length <= 30 && Name.Length > 0)//限制条件，输入的字符串长度要小于30
                     {
                         fileName = fileName2 + ThreeDigits(i+1) + Name.Substring(0, 4) + ".bmp";
                         var qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
@@ -116,8 +124,12 @@ GenQrCode(string args)的作用是生成二维码，并保存图片到指定路�
                             gRender.WriteToStream(qrCode.Matrix, ImageFormat.Bmp, stream, new Point(600, 600));//生成图片
                         }
                     }
+                    else
+                    {
+                        Console.WriteLine("提示：输入字符的长度不能大于30位！！");
+                    }
                 }
-            }     
+            }   
         }
 <br /> 
 
