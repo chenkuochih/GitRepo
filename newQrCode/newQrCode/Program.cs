@@ -126,7 +126,7 @@ namespace newQrCode
             SampleText = Read(args);
             Console.WriteLine("请输入要保存的文件路径：");
             String fileName2 = CreateFile();
-            ////每一次执行前都把文件夹清空。
+            ////每一次执行前都把文件夹清空，但是不安全！！
             //foreach (FileInfo file in (new DirectoryInfo(fileName2)).GetFiles())
             //{
             //    file.Attributes = FileAttributes.Normal;
@@ -223,4 +223,3 @@ namespace newQrCode
         }
     }
 }
-
