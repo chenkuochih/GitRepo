@@ -38,7 +38,7 @@ namespace newQrCode
             SampleText = Read(args);
             for (int i = 0; SampleText[i] != null; i++)
             {
-                if (SampleText[i].Length < 30 && SampleText[i].Length > 0)
+                if (SampleText[i].Length <= 30 && SampleText[i].Length > 0)
                 {
                     QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.M);
                     QrCode qrCode = qrEncoder.Encode(SampleText[i]);
@@ -53,13 +53,17 @@ namespace newQrCode
                     }
                     Console.WriteLine();
                 }
+                else
+                {
+                    Console.WriteLine("输入字符的长度不能大于40位！");
+                }
             }
         }
 
         public static void printQrEncoder2(string args)
         {
             string SampleText = args;
-            if (SampleText.Length < 30 && SampleText.Length > 0)
+            if (SampleText.Length <= 30 && SampleText.Length > 0)
             {
                 QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.M);
                 QrCode qrCode = qrEncoder.Encode(SampleText);
@@ -130,7 +134,7 @@ namespace newQrCode
                     //Console.WriteLine(i);
                     string Name = SampleText[i];
                     string fileName;
-                    if (Name.Length <= 30 && Name.Length > 0)//限制条件
+                    if (Name.Length <= 30 && Name.Length > 0)//限制条件，输入的字符串长度要小于30
                     {
                         fileName = fileName2 + ThreeDigits(i+1) + Name.Substring(0, 4) + ".bmp";
                         var qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
@@ -140,6 +144,10 @@ namespace newQrCode
                         {
                             gRender.WriteToStream(qrCode.Matrix, ImageFormat.Bmp, stream, new Point(600, 600));//生成图片
                         }
+                    }
+                    else
+                    {
+                        Console.WriteLine("提示：输入字符的长度不能大于30位！！");
                     }
                 }
             }
@@ -161,26 +169,47 @@ namespace newQrCode
             //Console.WriteLine(args[0].Substring(0, 2)=="-f");
             else if (args[0].Substring(0, 2) == "-f")
             {
-                GenQrCode(args[0].Substring(2));
-                Console.WriteLine("生成完毕");
+                //不存在的文件，应该提示帮助信息，并正常终止。不应该异常终止。
+                if (!File.Exists(args[0].Substring(2)))
+                {
+                    Console.WriteLine("提示：该文件不存在，请重新输入正确的文件路径！");                  
+                }
+                else
+                {
+                    GenQrCode(args[0].Substring(2));
+                    Console.WriteLine("生成完毕");
+                }
             }
             else
             {
-                Console.WriteLine("请问您输入的是文件夹路径还是字符串？");
-                Console.WriteLine("1：文件夹路径     2：字符串");
-                string strReadFilePath;
-                // 读取文件的源路径及其读取流
-                strReadFilePath = Console.ReadLine();
-                switch (strReadFilePath)
+                if(args[0].Substring(2).Length <= 30 && args[0].Substring(2).Length > 0)
                 {
-                    case "1":
-                        printQrEncoder(args[0]);
-                        break;
-                    case "2":
-                        printQrEncoder2(args[0]);
-                        break;
+                    Console.WriteLine("请问您输入的是文件夹路径还是字符串？");
+                    Console.WriteLine("1：文件夹路径     2：字符串");
+                    string strReadFilePath;
+                    // 读取文件的源路径及其读取流
+                    strReadFilePath = Console.ReadLine();
+                    switch (strReadFilePath)
+                    {
+                        case "1":
+                            if (!File.Exists(args[0].Substring(2)))
+                            {
+                                Console.WriteLine("提示：该文件不存在，请重新输入正确的文件路径！");
+                                break;
+                            }
+                            printQrEncoder(args[0]);
+                            Console.WriteLine("生成完毕");
+                            break;
+                        case "2":
+                            printQrEncoder2(args[0]);
+                            Console.WriteLine("生成完毕");
+                            break;
+                    }
                 }
-                Console.WriteLine("生成完毕");
+                else
+                {
+                    Console.WriteLine("提示：输入字符的长度不能大于30位！");
+                }
             }
             Console.ReadKey();
         }
