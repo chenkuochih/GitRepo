@@ -55,7 +55,7 @@ namespace newQrCode
                 }
                 else
                 {
-                    Console.WriteLine("输入字符的长度不能大于40位！");
+                    Console.WriteLine("输入字符的长度不能大于30位！");
                 }
             }
         }
