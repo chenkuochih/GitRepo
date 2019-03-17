@@ -31,7 +31,7 @@ namespace newQrCode
             return strReadLine;
         }
 
-
+        //在控制台打印文本中的二维码
         public static void printQrEncoder(string args)
         {
             string[] SampleText = new string[100];
@@ -40,7 +40,9 @@ namespace newQrCode
             {
                 if (SampleText[i].Length <= 30 && SampleText[i].Length > 0)
                 {
+                    //设置二维码的纠错级别
                     QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.M);
+                    //根据文本生成二维码
                     QrCode qrCode = qrEncoder.Encode(SampleText[i]);
                     for (int j = 0; j < qrCode.Matrix.Width; j++)
                     {
@@ -60,12 +62,15 @@ namespace newQrCode
             }
         }
 
+        //直接生成以命令行参数为内容的二维码并打印出来
         public static void printQrEncoder2(string args)
         {
             string SampleText = args;
             if (SampleText.Length <= 30 && SampleText.Length > 0)
             {
+                //设置二维码的纠错级别
                 QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.M);
+                //根据文本生成二维码
                 QrCode qrCode = qrEncoder.Encode(SampleText);
                 for (int j = 0; j < qrCode.Matrix.Width; j++)
                 {
@@ -80,6 +85,11 @@ namespace newQrCode
             }
         }
 
+        /// <summary>
+        /// 将文件名的编号转换为三位数
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns>最终编号</returns>
         public static string ThreeDigits(int i)
         {
             if(i>0 && i < 10)
@@ -150,9 +160,7 @@ namespace newQrCode
                         Console.WriteLine("提示：输入字符的长度不能大于30位！！");
                     }
                 }
-            }
-            
-           
+            }   
         }
 
         static void Main(string[] args)
