@@ -17,9 +17,11 @@
 ## 代码总量：255行 <br />
 ## 工作时间：三天 <br />
 ## 知识点总结图 <br />
-![知识点总结](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%80%E3%80%91%E6%97%A0-f%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%9C%EF%BC%882%EF%BC%89.png)
-## 代码分析 <br />
-Read(string args)的作用是从命令行读取参数，以便于后面判断是否有-f
+![知识点总结](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93%E5%9B%BE.png)
+## 结论 <br />
+实验过程：
+-------------
+使用Read(string args)函数，作用是从命令行读取参数，以便于后面判断是否有-f
 -------------
      public static string[] Read(string args)
         {
@@ -38,7 +40,7 @@ Read(string args)的作用是从命令行读取参数，以便于后面判断是
             return strReadLine;
         }
 
-printQrEncoder(string args)的作用是在控制台打印文本中的二维码
+使用printQrEncoder(string args)函数，作用是在控制台打印文本中的二维码
 ------------
      public static void printQrEncoder(string args)
         {
@@ -69,7 +71,7 @@ printQrEncoder(string args)的作用是在控制台打印文本中的二维码
                 }
             }
         }
-printQrEncoder2(string args)的作用是直接生成以命令行参数为内容的二维码并打印出来
+使用printQrEncoder2(string args)函数，作用是直接生成以命令行参数为内容的二维码并打印出来
 ----------------
      public static void printQrEncoder2(string args)
         {
@@ -92,7 +94,7 @@ printQrEncoder2(string args)的作用是直接生成以命令行参数为内容�
                 Console.WriteLine();
             }
         }
-GenQrCode(string args)的作用是生成二维码，并保存图片到指定路径下
+使用GenQrCode(string args)函数，作用是生成二维码，并保存图片到指定路径下
 ----------------
         <param name="fileName">图片保存路径全名（包括路径和文件名）</param>
         <param name="content">要生成二维码的内容</param>
@@ -137,7 +139,7 @@ GenQrCode(string args)的作用是生成二维码，并保存图片到指定路�
         }
 <br /> 
 
-执行结果截图
+实验结果：
 ------------
 ### 有-f的代码截图
 
