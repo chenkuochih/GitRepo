@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
+using System.Media;
 using System.Windows.Forms;
 using Sanford.Multimedia.Midi;
 using Sanford.Multimedia.Midi.UI;
@@ -363,5 +363,6 @@ namespace SequencerDemo
                 System.Environment.Exit(0);//这是最彻底的退出方式，不管什么线程都被强制退出，把程序结束的很干净。
             }
         }
+
     }
 }

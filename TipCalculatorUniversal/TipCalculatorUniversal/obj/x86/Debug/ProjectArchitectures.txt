@@ -1,0 +1,1 @@
+e:\vsproject\TipCalculatorUniversal\TipCalculatorUniversal\TipCalculatorUniversal.csproj;x86

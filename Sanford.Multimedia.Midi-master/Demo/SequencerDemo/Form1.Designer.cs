@@ -60,8 +60,8 @@ namespace SequencerDemo
             // stopButton
             // 
             this.stopButton.Font = new System.Drawing.Font("свт╡", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.stopButton.Location = new System.Drawing.Point(115, 105);
-            this.stopButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.stopButton.Location = new System.Drawing.Point(212, 124);
+            this.stopButton.Margin = new System.Windows.Forms.Padding(4);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(100, 26);
             this.stopButton.TabIndex = 0;
@@ -72,8 +72,8 @@ namespace SequencerDemo
             // startButton
             // 
             this.startButton.Font = new System.Drawing.Font("свт╡", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.startButton.Location = new System.Drawing.Point(376, 105);
-            this.startButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.startButton.Location = new System.Drawing.Point(533, 124);
+            this.startButton.Margin = new System.Windows.Forms.Padding(4);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(100, 26);
             this.startButton.TabIndex = 1;
@@ -84,8 +84,8 @@ namespace SequencerDemo
             // continueButton
             // 
             this.continueButton.Font = new System.Drawing.Font("свт╡", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.continueButton.Location = new System.Drawing.Point(115, 177);
-            this.continueButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.continueButton.Location = new System.Drawing.Point(212, 209);
+            this.continueButton.Margin = new System.Windows.Forms.Padding(4);
             this.continueButton.Name = "continueButton";
             this.continueButton.Size = new System.Drawing.Size(100, 26);
             this.continueButton.TabIndex = 2;
@@ -95,9 +95,9 @@ namespace SequencerDemo
             // 
             // positionHScrollBar
             // 
-            this.positionHScrollBar.Location = new System.Drawing.Point(16, 52);
+            this.positionHScrollBar.Location = new System.Drawing.Point(120, 58);
             this.positionHScrollBar.Name = "positionHScrollBar";
-            this.positionHScrollBar.Size = new System.Drawing.Size(560, 30);
+            this.positionHScrollBar.Size = new System.Drawing.Size(570, 30);
             this.positionHScrollBar.TabIndex = 3;
             this.positionHScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.positionHScrollBar_Scroll);
             // 
@@ -128,19 +128,19 @@ namespace SequencerDemo
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.openToolStripMenuItem.Text = "&Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(133, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(213, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -206,12 +206,12 @@ namespace SequencerDemo
             // 
             this.pianoControl1.BackColor = System.Drawing.SystemColors.Control;
             this.pianoControl1.HighNoteID = 109;
-            this.pianoControl1.Location = new System.Drawing.Point(16, 364);
+            this.pianoControl1.Location = new System.Drawing.Point(120, 362);
             this.pianoControl1.LowNoteID = 21;
-            this.pianoControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pianoControl1.Margin = new System.Windows.Forms.Padding(4);
             this.pianoControl1.Name = "pianoControl1";
             this.pianoControl1.NoteOnColor = System.Drawing.Color.SkyBlue;
-            this.pianoControl1.Size = new System.Drawing.Size(565, 49);
+            this.pianoControl1.Size = new System.Drawing.Size(570, 49);
             this.pianoControl1.TabIndex = 5;
             this.pianoControl1.Text = "pianoControl1";
             this.pianoControl1.PianoKeyDown += new System.EventHandler<Sanford.Multimedia.Midi.UI.PianoKeyEventArgs>(this.pianoControl1_PianoKeyDown);
@@ -234,11 +234,11 @@ namespace SequencerDemo
             // quit_button
             // 
             this.quit_button.Font = new System.Drawing.Font("свт╡", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.quit_button.Location = new System.Drawing.Point(376, 177);
+            this.quit_button.Location = new System.Drawing.Point(533, 218);
             this.quit_button.Name = "quit_button";
             this.quit_button.Size = new System.Drawing.Size(100, 26);
             this.quit_button.TabIndex = 7;
-            this.quit_button.Text = " quit";
+            this.quit_button.Text = "Quit";
             this.quit_button.UseVisualStyleBackColor = true;
             this.quit_button.Click += new System.EventHandler(this.quit_button_Click);
             // 
@@ -247,6 +247,7 @@ namespace SequencerDemo
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(927, 441);
             this.Controls.Add(this.quit_button);
             this.Controls.Add(this.statusStrip1);
@@ -258,7 +259,7 @@ namespace SequencerDemo
             this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Sequencer Demo";
             this.Load += new System.EventHandler(this.Form1_Load);
