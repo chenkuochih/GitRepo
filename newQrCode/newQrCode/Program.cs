@@ -26,6 +26,12 @@ namespace newQrCode
             {
                 strReadLine[line] = srReadFile.ReadLine(); //读取每行数据
                 line++;
+                if(line > 999)
+                {
+                    Console.WriteLine("最多输入1000行数据，1000行后的数据将不作处理");
+                    srReadFile.Close();
+                    return strReadLine;
+                }
                 //Console.WriteLine(strReadLine); //屏幕打印每行数据
             }
             // 关闭读取流文件
