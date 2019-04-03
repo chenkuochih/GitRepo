@@ -1,4 +1,6 @@
 using System;
+using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -19,7 +21,7 @@ namespace newQrCode
             StreamReader srReadFile = new StreamReader(args);
             // 读取流直至文件末尾结束
             int line = 0;
-            string[] strReadLine = new string[100];
+            string[] strReadLine = new string[1000];
             while (!srReadFile.EndOfStream)
             {
                 strReadLine[line] = srReadFile.ReadLine(); //读取每行数据
@@ -34,7 +36,7 @@ namespace newQrCode
         //在控制台打印文本中的二维码
         public static void printQrEncoder(string args)
         {
-            string[] SampleText = new string[100];
+            string[] SampleText = new string[1000];
             SampleText = Read(args);
             for (int i = 0; SampleText[i] != null; i++)
             {
@@ -92,11 +94,11 @@ namespace newQrCode
         /// <returns>最终编号</returns>
         public static string ThreeDigits(int i)
         {
-            if(i>0 && i < 10)
+            if (i > 0 && i < 10)
             {
                 return "00" + i;
             }
-            else if(i<100)
+            else if (i < 100)
             {
                 return "0" + i;
             }
@@ -111,19 +113,17 @@ namespace newQrCode
             string strReadFilePath;
             // 读取文件的源路径及其读取流
             strReadFilePath = Console.ReadLine();
+            while(strReadFilePath == "")
+            {
+                Console.WriteLine("文件路径不能为空！！");
+                Console.WriteLine("请重新输入：");
+                strReadFilePath = Console.ReadLine();
+            }
             return strReadFilePath;
         }
 
-        /// <summary>
-        /// 生成二维码，并保存图片到指定路径下
-        /// </summary>
-        /// <param name="fileName">图片保存路径全名（包括路径和文件名）</param>
-        /// <param name="content">要生成二维码的内容</param>
-        public static void GenQrCode(string args)
+        public static void printCode(string[] SampleText)
         {
-            //Console.WriteLine(args);
-            string[] SampleText = new string[1000];
-            SampleText = Read(args);
             Console.WriteLine("请输入要保存的文件路径：");
             String fileName2 = CreateFile();
             ////每一次执行前都把文件夹清空，但是不安全！！
@@ -139,14 +139,14 @@ namespace newQrCode
             }
             if (SampleText != null)
             {
-                for (int i = 0; SampleText[i]!=null; i++)
+                for (int i = 0; SampleText[i] != null; i++)
                 {
                     //Console.WriteLine(i);
                     string Name = SampleText[i];
                     string fileName;
                     if (Name.Length <= 30 && Name.Length > 0)//限制条件，输入的字符串长度要小于30
                     {
-                        fileName = fileName2 + ThreeDigits(i+1) + Name.Substring(0, 4) + ".bmp";
+                        fileName = fileName2 + ThreeDigits(i + 1) + Name.Substring(0, 4) + ".bmp";
                         var qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
                         var qrCode = qrEncoder.Encode(SampleText[i]);//生成二维码
                         GraphicsRenderer gRender = new GraphicsRenderer(new FixedModuleSize(30, QuietZoneModules.Four));
@@ -160,7 +160,62 @@ namespace newQrCode
                         Console.WriteLine("提示：输入字符的长度不能大于30位！！");
                     }
                 }
-            }   
+            }
+        }
+
+        /// <summary>
+        /// 生成二维码，并保存图片到指定路径下
+        /// </summary>
+        /// <param name="fileName">图片保存路径全名（包括路径和文件名）</param>
+        /// <param name="content">要生成二维码的内容</param>
+        public static void GenQrCode(string args)
+        {
+            string[] SampleText = new string[1000];
+            SampleText = Read(args);
+            printCode(SampleText);
+        }
+
+        //把EXCEL文件当做一个数据源来进行数据的读取操作
+        public static DataSet ExcelToDS(string Path)
+        {
+            string strConn = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + Path + ";" + "Extended Properties=Excel 8.0;";
+            OleDbConnection conn = new OleDbConnection(strConn);
+            conn.Open();
+            string strExcel = "";
+            OleDbDataAdapter myCommand = null;
+            DataSet ds = null;
+            DataTable schemaTable = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+            //表格数据存储在sheet1中
+            strExcel = "select * from [sheet1$]";
+            myCommand = new OleDbDataAdapter(strExcel, strConn);
+            ds = new DataSet();
+            myCommand.Fill(ds, "table1");
+            return ds;
+        }
+
+        /// <summary>
+        /// 生成二维码，并保存图片到指定路径下
+        /// </summary>
+        public static void ExcelQrCode(string strExcelPath)
+        {
+            DataSet dataSet = ExcelToDS(strExcelPath);
+            string[] SampleText = new string[1000];
+            int count = 0;
+            //遍历一个表多行多列
+            foreach (DataRow mDr in dataSet.Tables[0].Rows)
+            {
+                foreach (DataColumn mDc in dataSet.Tables[0].Columns)
+                {
+                    if (mDr[mDc].ToString() != "")
+                    {
+                        SampleText[count] = mDr[mDc].ToString();
+                        count++;
+                        //Console.WriteLine(mDr[mDc].ToString());
+                    }
+
+                }
+            }
+            printCode(SampleText);
         }
 
         static void Main(string[] args)
@@ -184,19 +239,35 @@ namespace newQrCode
                 }
                 else
                 {
-                    GenQrCode(args[0].Substring(2));
-                    Console.WriteLine("生成完毕");
+                    Console.WriteLine("请问您打开的是txt文件还是excel表格？");
+                    Console.WriteLine("1：txt文件     2：excel表格");
+                    string strReadFilePath = Console.ReadLine();
+                    if (strReadFilePath == "1")
+                    {
+                        GenQrCode(args[0].Substring(2));
+                        Console.WriteLine("生成完毕");
+                    }
+                    else if (strReadFilePath == "2")
+                    {
+                        ExcelQrCode(args[0].Substring(2));
+                        Console.WriteLine("生成完毕");
+                    }
+                    else
+                    {
+                        Console.WriteLine("请输入1或者2");
+                    }
                 }
             }
             else
             {
                 if(args[0].Substring(2).Length <= 30 && args[0].Substring(2).Length > 0)
                 {
-                    Console.WriteLine("请问您输入的是文件夹路径还是字符串？");
-                    Console.WriteLine("1：文件夹路径     2：字符串");
+                    Console.WriteLine("请问您输入的是txt文件夹路径还是字符串？");
+                    Console.WriteLine("1：txt文件夹路径     2：字符串");
                     string strReadFilePath;
                     // 读取文件的源路径及其读取流
                     strReadFilePath = Console.ReadLine();
+                    string extension = Path.GetExtension(args[0].Substring(2));
                     switch (strReadFilePath)
                     {
                         case "1":
@@ -205,12 +276,21 @@ namespace newQrCode
                                 Console.WriteLine("提示：该文件不存在，请重新输入正确的文件路径！");
                                 break;
                             }
+                            else if (extension != ".txt")
+                            {
+                                Console.WriteLine("只能读取txt类型的文本文件");
+                                break;
+                            }
                             printQrEncoder(args[0]);
                             Console.WriteLine("生成完毕");
                             break;
+
                         case "2":
                             printQrEncoder2(args[0]);
                             Console.WriteLine("生成完毕");
+                            break;
+                        default:
+                            Console.WriteLine("请输入1或者2");
                             break;
                     }
                 }
