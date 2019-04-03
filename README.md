@@ -6,16 +6,17 @@
      （4）用手机识别可以还原数据。
      （5）在命令行里传递一个文件名(包括文件所在目录，可以是可执行文件所在目录的相对目录例如data\qrcode.txt)，该文件是文本文件，文件中每行有一条字符串信息。假定myqrcode为本程序编译后的可执行文件名，-f表示QrCode信息放在-f后的data\qrcode.txt文件中。在控制台界面输入如下命令，可以将qrcode.txt中的每一行信息生成一个QrCode。
      （6）生成的QrCode保存到.png中，保存的文件名以信息所在行号三位数+信息的前四个字符构成。如果没有-f则以上述a的方式在控制台输出QrCode。
+     （7）读取excel表格中的数据，并将其打印到指定文件夹
      
 ## 项目特色 <br />
-    （1）根据-f的有无以及参数的有无，分别有不同的输出情况。无参数：输出用户输入提示。有-f：根据-f后的txt文件生成二维码图片。没有-f：在控制台打印二维码。
+    （1）根据-f的有无以及参数的有无，分别有不同的输出情况。无参数：输出用户输入提示。有-f：根据-f后的txt文件/excel文件生成二维码图片。没有-f：在控制台打印二维码。
     （2）用户可以根据输入的文件目录将二维码保存到本地。
     （3）没有-f时有两种情况。一：根据传入的文件路径读取传入的文件的内容，并将文件内容以二维码的方式输出。二：直接打印传入的命令行参数。具体使用哪种情况视用户的选择而定。
     （4）用户输入字符串长度大于30时会给予提示并安全退出。
     （5）用户输入错误路径时会给予提示并安全退出。
 
-## 代码总量：255行 <br />
-## 工作时间：三天 <br />
+## 代码总量：300行左右 <br />
+## 工作时间：4天 <br />
 ## 知识点总结图 <br />
 ![知识点总结](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.png)
 ## 结论 <br />
@@ -33,7 +34,12 @@
             {
                 strReadLine[line] = srReadFile.ReadLine(); //读取每行数据
                 line++;
-                //Console.WriteLine(strReadLine); //屏幕打印每行数据
+                if(line > 999)
+                {
+                    Console.WriteLine("最多输入1000行数据，1000行后的数据将不作处理");
+                    srReadFile.Close();
+                    return strReadLine;
+                }
             }
             // 关闭读取流文件
             srReadFile.Close();
@@ -139,6 +145,25 @@
         }
 <br /> 
 
+使用ExcelToDS(string Path)函数，作用是把EXCEL文件当做一个数据源来进行数据的读取操作
+----------------
+        public static DataSet ExcelToDS(string Path)
+        {
+            string strConn = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + Path + ";" + "Extended Properties=Excel 8.0;";
+            OleDbConnection conn = new OleDbConnection(strConn);
+            conn.Open();
+            string strExcel = "";
+            OleDbDataAdapter myCommand = null;
+            DataSet ds = null;
+            DataTable schemaTable = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+            //表格数据存储在sheet1中
+            strExcel = "select * from [sheet1$]";
+            myCommand = new OleDbDataAdapter(strExcel, strConn);
+            ds = new DataSet();
+            myCommand.Fill(ds, "table1");
+            return ds;
+        }
+
 实验结果：
 ------------
 ### 有-f的代码截图
@@ -162,6 +187,13 @@
 
 ### 输入长度等于三十的字符的结果截图
 ![输入长度等于三十的字符的结果截图](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%80%E3%80%91%E8%BE%93%E5%85%A5%E9%95%BF%E5%BA%A6%E7%AD%89%E4%BA%8E%E4%B8%89%E5%8D%81%E7%9A%84%E5%AD%97%E7%AC%A6%E7%9A%84%E7%BB%93%E6%9E%9C.png)
+
+### 输入空路径的结果
+![输入空路径的结果](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%80%E3%80%91%E8%BE%93%E5%85%A5%E7%A9%BA%E8%B7%AF%E5%BE%84%E7%9A%84%E7%BB%93%E6%9E%9C.png)
+
+### 在控制台打印参数输入非txt文件的结果
+![输入空路径的结果](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%80%E3%80%91%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E6%89%93%E5%8D%B0%E5%8F%82%E6%95%B0%E5%8F%AA%E8%83%BD%E8%AF%BB%E5%8F%96txt%E6%96%87%E4%BB%B6.png)
+
 
 
 <br />
