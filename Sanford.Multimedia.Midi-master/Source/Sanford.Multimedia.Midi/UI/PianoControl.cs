@@ -178,7 +178,7 @@ namespace Sanford.Multimedia.Midi.UI
                 Controls.Add(keys[i]);
             }
         }
-
+        
         private void InitializePianoKeys()
         {
             #region Guard

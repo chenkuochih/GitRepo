@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+
 using System.Drawing;
 using System.Media;
 using System.Windows.Forms;
@@ -27,13 +26,18 @@ namespace SequencerDemo
         private float X;//当前窗体的宽度
         private float Y;//当前窗体的高度
 
+        string lastFileName;
+
+        bool AutoLoop = false;
+        bool AutoStart = false;
+
         public Form1()
         {
             InitializeComponent();
             X = this.Width;
             Y = this.Height;
             setTag(this);
-            Form1_Resize(new object(), new EventArgs());
+            Form1_ResizeEnd(new object(), new EventArgs());
         }
 
 
@@ -43,7 +47,6 @@ namespace SequencerDemo
             {
                 MessageBox.Show("No MIDI output devices available.", "Error!",
                     MessageBoxButtons.OK, MessageBoxIcon.Stop);
-
                 Close();
             }
             else
@@ -113,6 +116,7 @@ namespace SequencerDemo
 
         public void Open(string fileName)
         {
+            lastFileName = fileName;
             try
             {
                 sequencer1.Stop();
@@ -210,7 +214,16 @@ namespace SequencerDemo
 
         private void HandleLoadCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            this.Cursor = Cursors.Arrow;
+            if (AutoLoop)
+            {
+                AutoStart = true;
+            }
+
+            if (AutoStart)
+            {
+                startButton_Click(sender, e);
+            }
+            this.Cursor = Cursors.Hand;//改变箭头形状
             startButton.Enabled = true;
             continueButton.Enabled = true;
             stopButton.Enabled = true;
@@ -263,7 +276,17 @@ namespace SequencerDemo
 
         private void HandlePlayingCompleted(object sender, EventArgs e)
         {
-            timer1.Stop();
+            timer1.Stop(); //计时停止
+            if (AutoLoop)
+            {
+                AutoStart = true;
+                Action<string> open = Open;
+                this.BeginInvoke(open, lastFileName);
+            }
+            else
+            {
+                playing = false;
+            }
         }
 
         private void pianoControl1_PianoKeyDown(object sender, PianoKeyEventArgs e)
@@ -346,13 +369,14 @@ namespace SequencerDemo
         }
         private void Form1_Resize(object sender, EventArgs e)
         {
-            float newx = (this.Width) / X; //窗体宽度缩放比例
-            float newy = (this.Height) / Y;//窗体高度缩放比例
-            setControls(newx, newy, this);//随窗体改变控件大小
+
+            //float newx = (this.Width) / X; //窗体宽度缩放比例
+            //float newy = (this.Height) / Y;//窗体高度缩放比例
+            //setControls(newx, newy, this);//随窗体改变控件大小
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Resize += new EventHandler(Form1_Resize);
+            this.Resize += new EventHandler(Form1_ResizeEnd);
         }
         private void quit_button_Click(object sender, EventArgs e)
         {
@@ -364,5 +388,26 @@ namespace SequencerDemo
             }
         }
 
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            float newx = (this.Width) / X; //窗体宽度缩放比例
+            float newy = (this.Height) / Y;//窗体高度缩放比例
+            setControls(newx, newy, this);//随窗体改变控件大小
+        }
+
+        private void loopPlay_Click(object sender, EventArgs e)
+        {
+            if(AutoLoop == true)
+            {
+                AutoLoop = false;
+                loop_button.Text = "Listplay";
+            }
+            else
+            {
+                AutoLoop = true;
+                loop_button.Text = "loopPlay";
+            }
+            
+        }
     }
 }
