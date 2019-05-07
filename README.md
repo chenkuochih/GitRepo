@@ -1,16 +1,26 @@
 # 第四次作业——编写一个简单的Web Api程序
 ## 功能概述 <br />
 1——当HomeController的View（“”）里的内容为Products时默认跳转到Products页面，执行Products页面的操作
+------------
     (1)添加数据
     添加一条记录的请求类型:POST  请求url:  /api/Products
     请求到ProductsController.cs中的 public HttpResponseMessage PostProduct(Product item) 方法。
     在框内输入Name，Category，Price，点击添加。会有弹窗提示添加成功或者失败。此外，每次添加成功的数据ID默认为上一个添加成功的数据ID+1
+    
+![添加成功](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%B7%BB%E5%8A%A0%E8%AE%B0%E5%BD%95.png)
+![添加成功](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%B7%BB%E5%8A%A0%E6%88%90%E5%8A%9F.png)
+
     (2)查询数据
     先根据Id查询记录的请求类型:GET  请求url:  /api/Products/Id
     请求到ProductsController.cs中的public Product GetProduct(int id) 方法
+    查询失败时会有提示
+![知识点总结](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%9F%A5%E8%AF%A2%E5%A4%B1%E8%B4%A5.png)   
+   
     (3)修改数据
     修改该Id的记录的请求类型:PUT  请求url:  /api/Products/Id
     请求到ProductsController.cs中的public void PutProduct(int id, Product product) 方法
+ ![知识点总结](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%B7%BB%E5%8A%A0%E6%88%90%E5%8A%9F.png)
+ 
     (4)删除数据
     删除输入Id的记录的请求类型:DELETE  请求url:  /api/Products/Id
     请求到ProductsController.cs中的public void DeleteProduct(int id) 方法
@@ -18,9 +28,15 @@
     将当前页面框中数据清除。
     
 2——当HomeController的View（“”）里的内容为Products时默认跳转到Products页面，执行Products页面的操作
-     (1)查询全部信息
-     ()根据ID查询
-     ()根据性别查询
+------------
+##### (1)查询全部信息
+   ![查询全部信息](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89.png)
+   
+##### (2)根据ID查询
+  ![根据ID查询](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%A0%B9%E6%8D%AEID%E6%9F%A5%E8%AF%A2.png)
+  
+##### (3)根据性别查询
+   ![根据性别查询](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%A0%B9%E6%8D%AE%E5%A7%93%E5%90%8D%E6%9F%A5%E8%AF%A2.png)
 
 
 # 第一次实验
