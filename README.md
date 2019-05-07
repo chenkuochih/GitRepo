@@ -6,30 +6,31 @@
     添加一条记录的请求类型:POST  请求url:  /api/Products
     请求到ProductsController.cs中的 public HttpResponseMessage PostProduct(Product item) 方法。
     在框内输入Name，Category，Price，点击添加。会有弹窗提示添加成功或者失败。此外，每次添加成功的数据ID默认为上一个添加成功的数据ID+1
-    
-![添加成功](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%B7%BB%E5%8A%A0%E8%AE%B0%E5%BD%95.png)
-![添加成功](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%B7%BB%E5%8A%A0%E6%88%90%E5%8A%9F.png)
-
     (2)查询数据
     先根据Id查询记录的请求类型:GET  请求url:  /api/Products/Id
     请求到ProductsController.cs中的public Product GetProduct(int id) 方法
     查询失败时会有提示
-![知识点总结](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%9F%A5%E8%AF%A2%E5%A4%B1%E8%B4%A5.png)   
-   
     (3)修改数据
     修改该Id的记录的请求类型:PUT  请求url:  /api/Products/Id
     请求到ProductsController.cs中的public void PutProduct(int id, Product product) 方法
- ![知识点总结](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E4%BF%AE%E6%94%B9%E6%88%90%E5%8A%9F.png)
- 
     (4)删除数据
     删除输入Id的记录的请求类型:DELETE  请求url:  /api/Products/Id
     请求到ProductsController.cs中的public void DeleteProduct(int id) 方法
     (5)清空数据
     将当前页面框中数据清除。
-    
+   
+   
+#### 添加数据
+![添加成功](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%B7%BB%E5%8A%A0%E8%AE%B0%E5%BD%95.png)
+#### 添加成功
+![添加成功](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%B7%BB%E5%8A%A0%E6%88%90%E5%8A%9F.png)
 
-
-
+#### 查询数据
+![查询数据](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%9F%A5%E8%AF%A2%E5%A4%B1%E8%B4%A5.png)   
+   
+#### 修改数据
+ ![修改数据](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E4%BF%AE%E6%94%B9%E6%88%90%E5%8A%9F.png)
+ 
 
 
 2——当HomeController的View（“”）里的内容为Products时默认跳转到Products页面，执行Products页面的操作
