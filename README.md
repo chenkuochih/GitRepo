@@ -27,15 +27,17 @@
     (5)清空数据
     将当前页面框中数据清除。
     
+<br />
+<br />
 2——当HomeController的View（“”）里的内容为Products时默认跳转到Products页面，执行Products页面的操作
 ------------
-##### (1)查询全部信息
+#### (1)查询全部信息
    ![查询全部信息](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89.png)
    
-##### (2)根据ID查询
+#### (2)根据ID查询
   ![根据ID查询](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%A0%B9%E6%8D%AEID%E6%9F%A5%E8%AF%A2.png)
   
-##### (3)根据性别查询
+#### (3)根据性别查询
    ![根据性别查询](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%A0%B9%E6%8D%AE%E5%A7%93%E5%90%8D%E6%9F%A5%E8%AF%A2.png)
 
 
