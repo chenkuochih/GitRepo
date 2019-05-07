@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 using System.Drawing;
+using System.IO;
 using System.Media;
 using System.Windows.Forms;
 using Sanford.Multimedia.Midi;
@@ -9,8 +11,11 @@ using Sanford.Multimedia.Midi.UI;
 
 namespace SequencerDemo
 {
+
     public partial class Form1 : Form
     {
+        private List<musicDatabase> musicList = new List<musicDatabase>();
+
         private bool scrolling = false;
 
         private bool playing = false;
@@ -114,6 +119,9 @@ namespace SequencerDemo
             }
         }
 
+        //将要添加的歌曲是否与已添加的歌曲重复
+        bool isRepeated = false;
+
         public void Open(string fileName)
         {
             lastFileName = fileName;
@@ -127,6 +135,22 @@ namespace SequencerDemo
                 continueButton.Enabled = false;
                 stopButton.Enabled = false;
                 openToolStripMenuItem.Enabled = false;
+                for (int i = 0; i < lstNativeList.Items.Count; i++)
+                {
+                    if (lstNativeList.Items[i].ToString().Contains(Path.GetFileNameWithoutExtension(fileName)))
+                    {
+                        isRepeated = true;
+                    }
+                }
+                if (isRepeated == false)
+                {
+                    lstNativeList.Items.Add((lstNativeList.Items.Count + 1).ToString() + " " + Path.GetFileNameWithoutExtension(fileName));
+                    // 把信息放进数据库
+                    musicDatabase md = new musicDatabase();
+                    md.musicName = Path.GetFileNameWithoutExtension(fileName);
+                    md.musicPath = fileName;
+                    musicList.Add(md);
+                }
             }
             catch (Exception ex)
             {
@@ -409,5 +433,50 @@ namespace SequencerDemo
             }
             
         }
+
+        private void lstNativeList_DoubleClick(object sender, EventArgs e)
+        {
+            string musicName = lstNativeList.Items[lstNativeList.SelectedIndex].ToString();
+            musicName = musicName.Substring(musicName.IndexOf(" ") + 1);
+            //MessageBox.Show(musicName);
+            string musicPath = "";
+            for(int i = 0; i < musicList.Count; i++)
+            {
+                if(musicList[i].musicName == musicName)
+                {
+                    musicPath = musicList[i].musicPath;
+                }
+            }
+            try
+            {
+                sequencer1.Stop();
+                playing = false;
+                sequence1.LoadAsync(musicPath);
+                this.Cursor = Cursors.WaitCursor;
+                startButton.Enabled = false;
+                continueButton.Enabled = false;
+                stopButton.Enabled = false;
+                openToolStripMenuItem.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            try
+            {
+                playing = true;
+                sequencer1.Start();
+                timer1.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+    }
+    public class musicDatabase
+    {
+        public string musicName;
+        public string musicPath;
     }
 }

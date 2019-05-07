@@ -1,0 +1,183 @@
+﻿@{
+
+    Layout = null;
+
+}
+
+
+
+<!DOCTYPE html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Default</title>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script type="text/javascript">
+        //用于保存用户输入数据
+        var Product = {
+            create: function () {
+                Id: "";
+                Name: "";
+                Category: "";
+                Price: "";
+                return Product;
+            }
+        }
+
+        $(document).ready(function () {
+            //添加一条记录 请求类型:POST  请求url:  /api/Products
+            //请求到ProductsController.cs中的 public HttpResponseMessage PostProduct(Product item) 方法
+            $("#addItem").click(function () {
+                var newProduct = Product.create();
+                newProduct.Name = $("#name").val();
+                newProduct.Category = $("#category").val();
+                newProduct.Price = $("#price").val();
+
+                $.ajax({
+                    url: "/api/Products",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(newProduct),
+                    success: function (data) {
+                        debugger
+                        if (data.Name == "" || data.Category == "" || data.Price == "") {
+                            alert("Name或Category或Price不能为空！");
+                        }
+                        else {
+                            alert("添加成功！");
+                        }
+                       
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("请求失败，消息：" + textStatus + "  " + errorThrown);
+                    }
+                });
+            });
+
+            //先根据Id查询记录  请求类型:GET  请求url:  /api/Products/Id
+            //请求到ProductsController.cs中的 public Product GetProduct(int id) 方法
+            $("#showItem").click(function () {
+                var inputId = $("#id2").val();
+                $("#name2").val("");
+                $("#category2").val("");
+                $("#price2").val("");
+                $.ajax({
+                    url: "/api/Products/" + inputId,
+                    type: "GET",
+                    contentType: "application/json; charset=urf-8",
+                    success: function (data) {
+                        if (inputId == "")
+                        {
+                            var html = "<ul>";
+                            debugger
+                            $(data).each(function (i, item) {
+
+                                html += "<li>" + item.Id + ":" + item.Name + ":" + item.Category + ":" + item.Price + "</li>";
+
+                            });
+
+                            html += "</ul>";
+
+                            $("#contactID").html(html);
+                        }
+                        $("#name2").val(data.Name);
+                        $("#category2").val(data.Category);
+                        $("#price2").val(data.Price);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("请求失败，消息：" + textStatus + "  " + errorThrown);
+                    }
+                });
+            });
+
+            //修改该Id的记录 请求类型:PUT  请求url:  /api/Products/Id
+            //请求到ProductsController.cs中的 public void PutProduct(int id, Product product) 方法
+            $("#editItem").click(function () {
+                var inputId = $("#id2").val();
+                var newProduct = Product.create();
+                newProduct.Name = $("#name2").val();
+                newProduct.Category = $("#category2").val();
+                newProduct.Price = $("#price2").val();
+
+                $.ajax({
+                    url: "/api/Products/" + inputId,
+                    type: "PUT",
+                    data: JSON.stringify(newProduct),
+                    contentType: "application/json; charset=urf-8",
+                    success: function () {
+                        alert("修改成功！ ");
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("请求失败，消息：" + textStatus + "  " + errorThrown);
+                    }
+                });
+            });
+
+            //删除输入Id的记录  请求类型:DELETE  请求url:  /api/Products/Id
+            //请求到ProductsController.cs中的  public void DeleteProduct(int id) 方法
+            $("#removeItem").click(function () {
+                var inputId = $("#id2").val();
+                $.ajax({
+                    url: "/api/Products/" + inputId,
+                    type: "DELETE",
+                    contentType: "application/json; charset=uft-8",
+                    success: function (data) {
+                        alert("Id为 " + inputId + " 的记录删除成功！");
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("请求失败，消息：" + textStatus + "  " + errorThrown);
+                    }
+                });
+            });
+
+            $("#emptyItem").click(function () {
+                $("#id2").val("");
+                $("#name2").val("");
+                $("#category2").val("");
+                $("#price2").val("");
+            })
+
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+
+
+    <div id="body">
+        <section>
+            <h2>添加记录</h2>
+            Name:<input id="name" type="text" /><br />
+            Category:<input id="category" type="text" />
+            Price:<input id="price" type="text" /><br />
+            <input id="addItem" type="button" value="添加" />
+        </section>
+
+        <section>
+            <br />
+            <br />
+            <h2>修改记录</h2>
+            Id：<input id="id2" type="text" /><br />
+            Name:<input id="name2" type="text" /><br />
+            Category:<input id="category2" type="text" />
+            Price:<input id="price2" type="text" /><br />
+            <input id="showItem" type="button" value="查询" />
+            <input id="editItem" type="button" value="修改" />
+            <input id="removeItem" type="button" value="删除" />
+            <input id="emptyItem" type="button" value="清空" />
+        </section>
+        <div id="contactID">
+
+        </div>
+
+    </div>
+
+
+</body>

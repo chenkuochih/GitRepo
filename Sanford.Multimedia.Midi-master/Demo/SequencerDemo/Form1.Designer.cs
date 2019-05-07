@@ -23,7 +23,7 @@ namespace SequencerDemo
         }
 
         #region Windows Form Designer generated code
-
+        private System.Windows.Forms.ListView lvSongList;
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -54,6 +54,7 @@ namespace SequencerDemo
             this.sequencer1 = new Sanford.Multimedia.Midi.Sequencer();
             this.quit_button = new System.Windows.Forms.Button();
             this.loop_button = new System.Windows.Forms.Button();
+            this.lstNativeList = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -112,7 +113,7 @@ namespace SequencerDemo
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(942, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(956, 28);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -189,7 +190,7 @@ namespace SequencerDemo
             this.statusStrip1.Location = new System.Drawing.Point(0, 415);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(942, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(956, 26);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -254,13 +255,24 @@ namespace SequencerDemo
             this.loop_button.UseVisualStyleBackColor = true;
             this.loop_button.Click += new System.EventHandler(this.loopPlay_Click);
             // 
+            // lstNativeList
+            // 
+            this.lstNativeList.FormattingEnabled = true;
+            this.lstNativeList.ItemHeight = 15;
+            this.lstNativeList.Location = new System.Drawing.Point(677, 142);
+            this.lstNativeList.Name = "lstNativeList";
+            this.lstNativeList.Size = new System.Drawing.Size(177, 199);
+            this.lstNativeList.TabIndex = 9;
+            this.lstNativeList.DoubleClick += new System.EventHandler(this.lstNativeList_DoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(942, 441);
+            this.ClientSize = new System.Drawing.Size(956, 441);
+            this.Controls.Add(this.lstNativeList);
             this.Controls.Add(this.loop_button);
             this.Controls.Add(this.quit_button);
             this.Controls.Add(this.statusStrip1);
@@ -312,6 +324,7 @@ namespace SequencerDemo
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button quit_button;
         private System.Windows.Forms.Button loop_button;
+        private System.Windows.Forms.ListBox lstNativeList;
     }
 }
 

@@ -1,0 +1,182 @@
+﻿<UserControl x:Class="WPFMidiBand.Controls.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="377" d:DesignWidth="500">
+    <UserControl.Resources>
+        <Storyboard x:Key="sbSnareDrum" Duration="0:0:0.500">
+            <DoubleAnimation From="1.0" To="1.8" 
+            Storyboard.TargetName="imgSnareDrum"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleX)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation From="1.0" To="1.8" 
+            Storyboard.TargetName="imgSnareDrum"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation From="0.5" To="1.0" Storyboard.TargetName="imgSnareDrum"
+            Storyboard.TargetProperty="Opacity" AutoReverse="True"/>
+        </Storyboard>
+
+        <Storyboard x:Key="sbFloorTom" Duration="0:0:0.500">
+            <DoubleAnimation From="1.0" To="1.8" 
+            Storyboard.TargetName="imgFloorTom"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleX)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation From="1.0" To="1.8" 
+            Storyboard.TargetName="imgFloorTom"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation From="0.5" To="1.0" Storyboard.TargetName="imgFloorTom"
+            Storyboard.TargetProperty="Opacity" AutoReverse="True"/>
+        </Storyboard>
+
+        <Storyboard x:Key="sbHiHat" Duration="0:0:0.250">
+            <DoubleAnimation From="-10.0" To="-35" 
+            Storyboard.TargetName="imgHiHatTop"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(TranslateTransform.Y)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation From="0.5" To="1.0" Storyboard.TargetName="imgHiHatTop"
+            Storyboard.TargetProperty="Opacity" AutoReverse="True"/>
+        </Storyboard>
+
+        <Storyboard x:Key="sbBassDrum" Duration="0:0:0.500">
+            <DoubleAnimation From="1.0" To="1.8" 
+            Storyboard.TargetName="imgBassDrum"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleX)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation From="1.0" To="1.8" 
+            Storyboard.TargetName="imgBassDrum"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation From="0.5" To="1.0" Storyboard.TargetName="imgBassDrum"
+            Storyboard.TargetProperty="Opacity" AutoReverse="True"/>
+        </Storyboard>
+
+        <Storyboard x:Key="sbTom2" Duration="0:0:0.500">
+            <DoubleAnimation From="1.0" To="1.8" 
+            Storyboard.TargetName="imgTom2"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleX)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation From="1.0" To="1.8" 
+            Storyboard.TargetName="imgTom2"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation From="0.5" To="1.0" Storyboard.TargetName="imgTom2"
+            Storyboard.TargetProperty="Opacity" AutoReverse="True"/>
+        </Storyboard>
+
+        <Storyboard x:Key="sbTom1" Duration="0:0:0.500">
+            <DoubleAnimation From="1.0" To="1.8" 
+            Storyboard.TargetName="imgTom1"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleX)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation From="1.0" To="1.8" 
+            Storyboard.TargetName="imgTom1"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation From="0.5" To="1.0" Storyboard.TargetName="imgTom1"
+            Storyboard.TargetProperty="Opacity" AutoReverse="True"/>
+        </Storyboard>
+
+        <Storyboard x:Key="sbRideCymbal" Duration="0:0:0.500">
+            <DoubleAnimation From="1.0" To="1.8" 
+            Storyboard.TargetName="imgRideCymbal"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleX)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation From="1.0" To="1.8" 
+            Storyboard.TargetName="imgRideCymbal"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation From="0.5" To="1.0" Storyboard.TargetName="imgRideCymbal"
+            Storyboard.TargetProperty="Opacity" AutoReverse="True"/>
+            <DoubleAnimation From="0.0" To="20.0" 
+            Storyboard.TargetName="imgRideCymbal"
+            Storyboard.TargetProperty="(Grid.RenderTransform).(RotateTransform.Angle)">
+                <DoubleAnimation.EasingFunction>
+                    <ElasticEase Oscillations="1" EasingMode="EaseIn" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Canvas>
+        <!--<Image x:Name="imgRideCymbal" Source="..\Images\RideCymbal.png" Opacity="1.0" Width="189" Height="64" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,35">
+            <Image.RenderTransform>
+                <RotateTransform x:Name="scaleRideCymbal" Angle="0.0" CenterX="58" CenterY="32"/>
+            </Image.RenderTransform>
+        </Image>-->
+        <Image x:Name="imgSnareDrum" Source="..\Images\SnareDrum.png" Opacity="1.0" Width="110" Height="49" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="274" Canvas.Top="183">
+            <Image.RenderTransform>
+                <ScaleTransform x:Name="scaleSnareDrum" ScaleX="1.0" ScaleY="1.0" CenterX="55" CenterY="24.5"/>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="imgFloorTom" Source="..\Images\FloorTom.png" Opacity="1.0" Width="117" Height="104" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="73" Canvas.Top="158">
+            <Image.RenderTransform>
+                <ScaleTransform x:Name="scaleFloorTom" ScaleX="1.0" ScaleY="1.0" CenterX="58.5" CenterY="52"/>
+            </Image.RenderTransform>
+        </Image>
+        <!--<Image x:Name="imgHiHatFixed" Source="..\Images\HiHatFixed.png" Opacity="1.0" Width="121" Height="105" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="323" Canvas.Top="150">
+        </Image>
+        <Image x:Name="imgHiHatTop" Source="..\Images\HiHatTop.png" Opacity="1.0" Width="124" Height="42" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="320" Canvas.Top="130">
+            <Image.RenderTransform>
+                <TranslateTransform x:Name="translateHiHatTop" Y="-10.0"/>
+            </Image.RenderTransform>
+        </Image>-->
+        <Image x:Name="imgBassDrum" Source="..\Images\BassDrum.png" Opacity="1.0" Width="158" Height="179" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="168" Canvas.Top="178">
+            <Image.RenderTransform>
+                <ScaleTransform x:Name="scaleBassDrum" ScaleX="1.0" ScaleY="1.0" CenterX="79" CenterY="89"/>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="imgTom2" Source="..\Images\Tom2.png" Opacity="1.0" Width="103" Height="97" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="263" Canvas.Top="85">
+            <Image.RenderTransform>
+                <ScaleTransform x:Name="scaleTom2" ScaleX="1.0" ScaleY="1.0" CenterX="61.5" CenterY="48.5"/>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="imgTom1" Source="..\Images\Tom1.png" Opacity="1.0" Width="113" Height="107" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="120" Canvas.Top="84">
+            <Image.RenderTransform>
+                <ScaleTransform x:Name="scaleTom1" ScaleX="1.0" ScaleY="1.0" CenterX="52.5" CenterY="53.5"/>
+            </Image.RenderTransform>
+        </Image>
+    </Canvas>
+</UserControl>
