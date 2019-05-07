@@ -27,8 +27,11 @@
     (5)清空数据
     将当前页面框中数据清除。
     
-<br />
-<br />
+
+
+
+
+
 2——当HomeController的View（“”）里的内容为Products时默认跳转到Products页面，执行Products页面的操作
 ------------
 #### (1)查询全部信息
