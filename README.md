@@ -19,7 +19,7 @@
     (3)修改数据
     修改该Id的记录的请求类型:PUT  请求url:  /api/Products/Id
     请求到ProductsController.cs中的public void PutProduct(int id, Product product) 方法
- ![知识点总结](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%B7%BB%E5%8A%A0%E6%88%90%E5%8A%9F.png)
+ ![知识点总结](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E4%BF%AE%E6%94%B9%E6%88%90%E5%8A%9F.png)
  
     (4)删除数据
     删除输入Id的记录的请求类型:DELETE  请求url:  /api/Products/Id
