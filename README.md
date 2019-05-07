@@ -1,3 +1,28 @@
+# 第四次作业——编写一个简单的Web Api程序
+## 功能概述 <br />
+1——当HomeController的View（“”）里的内容为Products时默认跳转到Products页面，执行Products页面的操作
+    (1)添加数据
+    添加一条记录的请求类型:POST  请求url:  /api/Products
+    请求到ProductsController.cs中的 public HttpResponseMessage PostProduct(Product item) 方法。
+    在框内输入Name，Category，Price，点击添加。会有弹窗提示添加成功或者失败。此外，每次添加成功的数据ID默认为上一个添加成功的数据ID+1
+    (2)查询数据
+    先根据Id查询记录的请求类型:GET  请求url:  /api/Products/Id
+    请求到ProductsController.cs中的public Product GetProduct(int id) 方法
+    (3)修改数据
+    修改该Id的记录的请求类型:PUT  请求url:  /api/Products/Id
+    请求到ProductsController.cs中的public void PutProduct(int id, Product product) 方法
+    (4)删除数据
+    删除输入Id的记录的请求类型:DELETE  请求url:  /api/Products/Id
+    请求到ProductsController.cs中的public void DeleteProduct(int id) 方法
+    (5)清空数据
+    将当前页面框中数据清除。
+    
+2——当HomeController的View（“”）里的内容为Products时默认跳转到Products页面，执行Products页面的操作
+     (1)查询全部信息
+     ()根据ID查询
+     ()根据性别查询
+
+
 # 第一次实验
 ## 功能概述 <br />
      （1） 当用户在命令行输入参数时，判断参数是否是QrCode可以生成的信息，长度是否符合本程序的基本要求（自定义长度为30），如果符合要求就直接产生QrCode的结果，将QrCode的编码矩阵在控制台屏幕上输出对应黑、白字符方块组成的QrCode码。
