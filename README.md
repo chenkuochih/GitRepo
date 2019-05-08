@@ -1,3 +1,99 @@
+# 第三次实验
+## 功能概述 <br />
+    1) 使用WPF Midi Band提供的源程序，在Visual Studio中建立相应的解决方案。
+    2) 能够成功编译WPF Midi Band提供的演示程序。并能正常播放MIDI文件。
+    3) 理解演示程序的内部工作机制: 参照WPF Midi Band文章内容，理解以Event/Delegate方式实现的模块间的耦合机制，各种类的继承关系等。
+    4) 对GUI界面中的控件大小、位置进行完善，使之能够随APP界面大小自动调整其自身大小。需要使用相应的Event完成此项工作。
+    5) 实现其他GUI界面的用户体验提升。
+## 项目特色 <br />
+    1) 对GUI界面控件大小位置进行了完善
+    2) 调整控件的位置，使控件在随窗口大小改变时更加美观。
+    3) 改变了鼠标移动到Button上的样式
+    4) 改变了控件字体及窗口背景
+    
+## 代码总量：160行 <br />
+## 工作时间：3天 <br />
+## 知识点总结图 <br />
+![知识点总结](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.png)
+## 结论 <br />
+实验过程：
+-------------
+对GUI界面中的控件大小、位置进行完善，使之能够随APP界面大小自动调整其自身大小。需要使用相应的Event完成此项工作。
+-------------
+    <Viewbox  Name="Viewbox1" Stretch="Fill" >
+        <Canvas Height="800" Name="Canvas1" Width="700" Background="Transparent" >
+        ......
+        </Canvas>
+    </Viewbox>
+实现对GUI界面的用户体验提升。
+-------------
+    （1）调整控件的位置，使控件在随窗口大小改变时更加美观。
+        <ctrl:PianoControlWPF x:Name="pianoControl1" Margin="0,10,-21.2,0" HorizontalAlignment="Left" Height="50" Width="518">
+        <ctrl:PianoControlWPF.RenderTransform>
+        <ScaleTransform ScaleX="1.18" ScaleY="1.18"/>
+        </ctrl:PianoControlWPF.RenderTransform>
+        </ctrl:PianoControlWPF>
+        <ctrl:GuitarControl Height="104" x:Name="guitarControl1" Margin="59,0,-62.2,0"/>
+        <ctrl:BassControl Height="105" x:Name="bassControl1" Margin="59,0,-62.2,0"/>
+        <ctrl:DrumControl x:Name="drumControl1" HorizontalAlignment="Left" VerticalAlignment="Center">
+         <ctrl:DrumControl.RenderTransform>
+              <TransformGroup>
+                   <ScaleTransform ScaleX="1.0" ScaleY="1.0"/>
+                   <TranslateTransform X="-0" Y="-30"/>
+              </TransformGroup>
+          </ctrl:DrumControl.RenderTransform>
+        </ctrl:DrumControl>
+        
+    （2）改变了控件字体及窗口背景
+        <LinearGradientBrush>
+            <GradientStop Offset="0.0" Color="Blue"/>
+            <GradientStop Offset="1.0" Color="Pink"/>
+        </LinearGradientBrush>
+        
+    （3）改变了鼠标移动到Button上的样式
+        <Style x:Key="btn" TargetType="Button">
+            <Setter Property="Margin" Value="5,5,5,5"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border BorderThickness="1" Margin="10 0 10 0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Height="30" CornerRadius="5,5,5,5" Background="#3E98D7">
+                                <TextBlock Grid.Column="1" Text="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="White"></TextBlock>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsMouseOver"  Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                                <Setter Property="FontSize" Value="13"></Setter>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                            </Trigger>
+                            <Trigger Property="Button.IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                            <Trigger Property="Button.IsEnabled" Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+          
+实验结果：
+------------
+对GUI界面控件大小位置进行完善
+-------------
+![控件大小](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.png)
+改变了控件字体及窗口背景
+-------------
+![窗口背景色](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.png)
+改变鼠标移动到Button上的样式
+-------------
+![改变样式](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.png)
+
+
+
+
 # 第二次实验
 ## 功能概述 <br />
     1) 使用C# MIDI Toolkit提供的源程序，在Visual Studio中建立相应的解决方案。
