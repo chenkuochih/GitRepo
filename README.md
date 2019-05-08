@@ -81,14 +81,11 @@
           
 实验结果：
 ------------
-对GUI界面控件大小位置进行完善
--------------
+### 对GUI界面控件大小位置进行完善
 ![控件大小](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%89%E3%80%91%E6%8E%A7%E4%BB%B6%E4%BD%8D%E7%BD%AE.png)
-改变了控件字体及窗口背景
--------------
+### 改变了控件字体及窗口背景
 ![窗口背景色](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%89%E3%80%91%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2.png)
-改变鼠标移动到Button上的样式
--------------
+### 改变鼠标移动到Button上的样式
 ![改变样式](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%89%E3%80%91%E9%BC%A0%E6%A0%87%E7%A7%BB%E5%8A%A8%E5%89%8D.png)
 ![改变样式](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%89%E3%80%91%E9%BC%A0%E6%A0%87%E7%A7%BB%E5%8A%A8%E5%90%8E.png)
 
@@ -298,17 +295,14 @@
           
 实验结果：
 ------------
-对GUI界面控件大小位置进行完善
--------------
+### 对GUI界面控件大小位置进行完善
+
 ![控件大小](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%BA%8C%E3%80%91%E6%8E%A7%E4%BB%B6%E5%A4%A7%E5%B0%8F.png)
-添加退出按钮
--------------
+### 添加退出按钮
 ![退出按钮](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%BA%8C%E3%80%91%E9%80%80%E5%87%BA.png)
-添加循环播放功能
--------------
+### 添加循环播放功能
 ![循环播放](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%BA%8C%E3%80%91%E5%8D%95%E6%9B%B2%E5%BE%AA%E7%8E%AF.png)
-创建播放列表
--------------
+### 创建播放列表
 ![播放列表](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%BA%8C%E3%80%91%E5%88%97%E8%A1%A8.png)
 ![添加失败](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%BA%8C%E3%80%91%E6%B7%BB%E5%8A%A0%E6%AD%8C%E6%9B%B2%E5%A4%B1%E8%B4%A5.png)
 
