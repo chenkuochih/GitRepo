@@ -1,3 +1,225 @@
+# 第二次实验
+## 功能概述 <br />
+    1) 使用C# MIDI Toolkit提供的源程序，在Visual Studio中建立相应的解决方案。
+    2) 能够成功编译C# MIDI Toolkit提供的演示程序。并能正常播放MIDI文件。
+    3) 理解演示程序的内部工作机制: 参照C# MIDI Toolkit文章内容，理解Event/Delegate方式实现的模块间的耦合机制，各种类的继承关系等。
+    4) 对GUI界面中的控件大小、位置进行完善，使之能够随APP界面大小自动调整其自身大小。需要使用相应的Event完成此项工作。
+    5) 实现对GUI界面的用户体验提升。
+
+## 项目特色 <br />
+    1) 对GUI界面控件大小位置进行了完善
+    2) 添加退出按钮
+    3) 添加循环播放功能
+    4) 创建播放列表
+    5) 改变了控件字体及窗口背景
+    
+## 代码总量：484行 <br />
+## 工作时间：3天 <br />
+## 知识点总结图 <br />
+![知识点总结](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.png)
+## 结论 <br />
+实验过程：
+-------------
+对GUI界面中的控件大小、位置进行完善，使之能够随APP界面大小自动调整其自身大小。需要使用相应的Event完成此项工作。
+-------------
+    （1）将控件的宽，高，左边距，顶边距和字体大小暂存到tag属性中
+        private void setTag(Control cons)
+        {
+            foreach (Control con in cons.Controls)
+            {
+                con.Tag = con.Width + ";" + con.Height + ";" + con.Left + ";" + con.Top + ";" + con.Font.Size;
+                if (con.Controls.Count > 0)
+                {
+                    setTag(con);
+                }
+            }
+        }
+    （2）遍历窗体中的控件，重新设置控件的值
+        private void setTag(Control cons)
+        {
+            foreach (Control con in cons.Controls)
+            {
+                con.Tag = con.Width + ";" + con.Height + ";" + con.Left + ";" + con.Top + ";" + con.Font.Size;
+                if (con.Controls.Count > 0)
+                {
+                    setTag(con);
+                }
+            }
+        }
+    （3）随窗体高度和宽度缩放比例确定控件大小
+        private void setTag(Control cons)
+        {
+            foreach (Control con in cons.Controls)
+            {
+                con.Tag = con.Width + ";" + con.Height + ";" + con.Left + ";" + con.Top + ";" + con.Font.Size;
+                if (con.Controls.Count > 0)
+                {
+                    setTag(con);
+                }
+            }
+        }
+实现对GUI界面的用户体验提升。
+-------------
+    （1）添加退出按钮
+        private void quit_button_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(this, "Are you sure you want to quit the program? ", "Closing prompt ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                //this.Close();
+                System.Environment.Exit(0);//这是最彻底的退出方式，不管什么线程都被强制退出，把程序结束的很干净。
+            }
+        }
+    （2）添加循环播放功能
+        private void loopPlay_Click(object sender, EventArgs e)
+        {
+            if(AutoLoop == true)
+            {
+                AutoLoop = false;
+                loop_button.Text = "Listplay";
+            }
+            else
+            {
+                AutoLoop = true;
+                loop_button.Text = "loopPlay";
+            }
+            
+        }
+        
+        private void HandleLoadCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            if (AutoLoop)
+            {
+                AutoStart = true;
+            }
+
+            if (AutoStart)
+            {
+                startButton_Click(sender, e);
+            }
+        }
+        
+        private void loopPlay_Click(object sender, EventArgs e)
+        {
+            if(AutoLoop == true)
+            {
+                AutoLoop = false;
+                loop_button.Text = "Listplay";
+            }
+            else
+            {
+                AutoLoop = true;
+                loop_button.Text = "loopPlay";
+            }
+        }
+    （3）创建播放列表，同时判断列表里的歌曲是否有重复
+        private List<musicDatabase> musicList = new List<musicDatabase>();
+        
+        public class musicDatabase
+        {
+            public string musicName;
+            public string musicPath;
+        }
+        
+        public void Open(string fileName)
+        {
+            lastFileName = fileName;
+            try
+            {
+                sequencer1.Stop();
+                playing = false;
+                sequence1.LoadAsync(fileName);
+                this.Cursor = Cursors.WaitCursor;
+                startButton.Enabled = false;
+                continueButton.Enabled = false;
+                stopButton.Enabled = false;
+                openToolStripMenuItem.Enabled = false;
+                for (int i = 0; i < lstNativeList.Items.Count; i++)
+                {
+                    if (lstNativeList.Items[i].ToString().Contains(Path.GetFileNameWithoutExtension(fileName)))
+                    {
+                        isRepeated = true;
+                        MessageBox.Show("添加失败，该歌曲已在列表中");
+                    }
+                }
+                if (isRepeated == false)
+                {
+                    lstNativeList.Items.Add((lstNativeList.Items.Count + 1).ToString() + " " + Path.GetFileNameWithoutExtension(fileName));
+                    // 把信息放进数据库
+                    musicDatabase md = new musicDatabase();
+                    md.musicName = Path.GetFileNameWithoutExtension(fileName);
+                    md.musicPath = fileName;
+                    musicList.Add(md);
+                    MessageBox.Show("添加成功！");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+        
+        private void lstNativeList_DoubleClick(object sender, EventArgs e)
+        {
+            string musicName = lstNativeList.Items[lstNativeList.SelectedIndex].ToString();
+            musicName = musicName.Substring(musicName.IndexOf(" ") + 1);
+            //MessageBox.Show(musicName);
+            string musicPath = "";
+            for(int i = 0; i < musicList.Count; i++)
+            {
+                if(musicList[i].musicName == musicName)
+                {
+                    musicPath = musicList[i].musicPath;
+                }
+            }
+            try
+            {
+                sequencer1.Stop();
+                playing = false;
+                sequence1.LoadAsync(musicPath);
+                this.Cursor = Cursors.WaitCursor;
+                startButton.Enabled = false;
+                continueButton.Enabled = false;
+                stopButton.Enabled = false;
+                openToolStripMenuItem.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            try
+            {
+                playing = true;
+                sequencer1.Start();
+                timer1.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+    }
+          
+实验结果：
+------------
+对GUI界面控件大小位置进行完善
+-------------
+![控件大小](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.png)
+添加退出按钮
+-------------
+![退出按钮](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.png)
+添加循环播放功能
+-------------
+    使用System.Environment.Exit(0);因为这是最彻底的退出方式，不管什么线程都被强制退出，把程序结束的很干净。
+![循环播放](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.png)
+创建播放列表
+-------------
+    使用System.Environment.Exit(0);因为这是最彻底的退出方式，不管什么线程都被强制退出，把程序结束的很干净。
+![播放列表](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.png)
+
+
+
+
 # 第四次作业——编写一个简单的Web Api程序
 ## 功能概述 <br />
 1——当HomeController的View（“”）里的内容为Products时默认跳转到Products页面，执行Products页面的操作
@@ -18,7 +240,6 @@
     请求到ProductsController.cs中的public void DeleteProduct(int id) 方法
     (5)清空数据
     将当前页面框中数据清除。
-   
    
 #### 添加数据
 ![添加成功](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E6%B7%BB%E5%8A%A0%E8%AE%B0%E5%BD%95.png)
