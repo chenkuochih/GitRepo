@@ -10,6 +10,9 @@
         </LinearGradientBrush>
     </Window.Background>
     <Window.Resources>
+        
+        
+        
         <Storyboard x:Key="sbClockOpen" x:Name="sbClockOpen" Duration="0:0:5">
             <DoubleAnimation From="0.0" To="1.0" 
             Storyboard.TargetName="grdClock"
@@ -43,6 +46,34 @@
             </DoubleAnimation>
         </Storyboard>
 
+        <Style x:Key="btn" TargetType="Button">
+            <Setter Property="Margin" Value="5,5,5,5"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border BorderThickness="1" Margin="10 0 10 0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Height="30" CornerRadius="5,5,5,5" Background="#3E98D7">
+                                <TextBlock Grid.Column="1" Text="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="White"></TextBlock>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsMouseOver"  Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                                <Setter Property="FontSize" Value="13"></Setter>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                            </Trigger>
+                            <Trigger Property="Button.IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                            <Trigger Property="Button.IsEnabled" Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
 
     </Window.Resources>
     <Viewbox  Name="Viewbox1" Stretch="Fill" >
@@ -57,10 +88,10 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="btnOpen" Content="Open" Grid.Column="0" Click="btnOpen_Click" Margin="65,0,0,0" Height="19" VerticalAlignment="Top"/>
-                            <Button x:Name="btnStop" Content="Stop" Grid.Column="1" Click="btnStop_Click" IsEnabled="False" />
-                            <Button x:Name="btnStart" Content="Start" Grid.Column="2" Click="btnStart_Click" IsEnabled="False"/>
-                            <Button x:Name="btnContinue" Content="Continue" Grid.Column="3" Click="btnContinue_Click" IsEnabled="False" Margin="0.2,0,-53.2,0.2"/>
+                            <Button x:Name="btnOpen" Content="Open" Style="{StaticResource btn}" Grid.Column="0" Click="btnOpen_Click" Margin="65,0,0,0" Height="19" VerticalAlignment="Top"/>
+                            <Button x:Name="btnStop" Content="Stop" Style="{StaticResource btn}" Grid.Column="1" Click="btnStop_Click" IsEnabled="False" />
+                            <Button x:Name="btnStart" Content="Start" Style="{StaticResource btn}" Grid.Column="2" Click="btnStart_Click" IsEnabled="False"/>
+                            <Button x:Name="btnContinue" Content="Continue" Style="{StaticResource btn}" Grid.Column="3" Click="btnContinue_Click" IsEnabled="False" Margin="0.2,0,-53.2,0.2"/>
                         </Grid>
                         <Slider x:Name="slider1" Minimum="0" Maximum="100" LargeChange="10" ValueChanged="slider1_ValueChanged"
                         Thumb.DragStarted="slider1_DragStarted" Thumb.DragCompleted="slider1_DragCompleted" Margin="64,0,-62.2,0" RenderTransformOrigin="0.5,0.5" Height="15">

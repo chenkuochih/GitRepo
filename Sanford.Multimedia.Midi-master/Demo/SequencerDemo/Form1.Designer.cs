@@ -65,7 +65,7 @@ namespace SequencerDemo
             this.stopButton.Location = new System.Drawing.Point(220, 220);
             this.stopButton.Margin = new System.Windows.Forms.Padding(4);
             this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(100, 26);
+            this.stopButton.Size = new System.Drawing.Size(108, 26);
             this.stopButton.TabIndex = 0;
             this.stopButton.Text = "Stop";
             this.stopButton.UseVisualStyleBackColor = true;
@@ -77,7 +77,7 @@ namespace SequencerDemo
             this.startButton.Location = new System.Drawing.Point(220, 142);
             this.startButton.Margin = new System.Windows.Forms.Padding(4);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(100, 26);
+            this.startButton.Size = new System.Drawing.Size(108, 26);
             this.startButton.TabIndex = 1;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
@@ -89,7 +89,7 @@ namespace SequencerDemo
             this.continueButton.Location = new System.Drawing.Point(489, 142);
             this.continueButton.Margin = new System.Windows.Forms.Padding(4);
             this.continueButton.Name = "continueButton";
-            this.continueButton.Size = new System.Drawing.Size(100, 26);
+            this.continueButton.Size = new System.Drawing.Size(113, 26);
             this.continueButton.TabIndex = 2;
             this.continueButton.Text = "Continue";
             this.continueButton.UseVisualStyleBackColor = true;
@@ -238,7 +238,7 @@ namespace SequencerDemo
             this.quit_button.Font = new System.Drawing.Font("свт╡", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.quit_button.Location = new System.Drawing.Point(489, 220);
             this.quit_button.Name = "quit_button";
-            this.quit_button.Size = new System.Drawing.Size(100, 26);
+            this.quit_button.Size = new System.Drawing.Size(113, 26);
             this.quit_button.TabIndex = 7;
             this.quit_button.Text = "Quit";
             this.quit_button.UseVisualStyleBackColor = true;
@@ -249,7 +249,7 @@ namespace SequencerDemo
             this.loop_button.Font = new System.Drawing.Font("свт╡", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.loop_button.Location = new System.Drawing.Point(220, 298);
             this.loop_button.Name = "loop_button";
-            this.loop_button.Size = new System.Drawing.Size(100, 26);
+            this.loop_button.Size = new System.Drawing.Size(108, 26);
             this.loop_button.TabIndex = 8;
             this.loop_button.Text = "loopPlay";
             this.loop_button.UseVisualStyleBackColor = true;

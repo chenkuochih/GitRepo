@@ -140,6 +140,7 @@ namespace SequencerDemo
                     if (lstNativeList.Items[i].ToString().Contains(Path.GetFileNameWithoutExtension(fileName)))
                     {
                         isRepeated = true;
+                        MessageBox.Show("添加失败，该歌曲已在列表中");
                     }
                 }
                 if (isRepeated == false)
@@ -150,6 +151,7 @@ namespace SequencerDemo
                     md.musicName = Path.GetFileNameWithoutExtension(fileName);
                     md.musicPath = fileName;
                     musicList.Add(md);
+                    MessageBox.Show("添加成功！");
                 }
             }
             catch (Exception ex)
@@ -394,9 +396,9 @@ namespace SequencerDemo
         private void Form1_Resize(object sender, EventArgs e)
         {
 
-            //float newx = (this.Width) / X; //窗体宽度缩放比例
-            //float newy = (this.Height) / Y;//窗体高度缩放比例
-            //setControls(newx, newy, this);//随窗体改变控件大小
+            //float newx = (this.width) / x; //窗体宽度缩放比例
+            //float newy = (this.height) / y;//窗体高度缩放比例
+            //setcontrols(newx, newy, this);//随窗体改变控件大小
         }
         private void Form1_Load(object sender, EventArgs e)
         {
