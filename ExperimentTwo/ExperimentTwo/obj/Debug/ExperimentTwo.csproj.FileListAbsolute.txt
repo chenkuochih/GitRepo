@@ -1,0 +1,108 @@
+E:\VS Code\ExperimentTwo\ExperimentTwo\bin\Debug\ExperimentTwo.exe.config
+E:\VS Code\ExperimentTwo\ExperimentTwo\bin\Debug\ExperimentTwo.exe
+E:\VS Code\ExperimentTwo\ExperimentTwo\bin\Debug\ExperimentTwo.pdb
+E:\VS Code\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.csprojResolveAssemblyReference.cache
+E:\VS Code\ExperimentTwo\ExperimentTwo\obj\Debug\MainWindow.g.cs
+E:\VS Code\ExperimentTwo\ExperimentTwo\obj\Debug\App.g.cs
+E:\VS Code\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo_MarkupCompile.cache
+E:\VS Code\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo_MarkupCompile.lref
+E:\VS Code\ExperimentTwo\ExperimentTwo\obj\Debug\MainWindow.baml
+E:\VS Code\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.g.resources
+E:\VS Code\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.Properties.Resources.resources
+E:\VS Code\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.csproj.GenerateResource.Cache
+E:\VS Code\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.csproj.CoreCompileInputs.cache
+E:\VS Code\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.exe
+E:\VS Code\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.pdb
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\bin\Debug\ExperimentTwo.exe.config
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\bin\Debug\ExperimentTwo.exe
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\bin\Debug\ExperimentTwo.pdb
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.csprojResolveAssemblyReference.cache
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\obj\Debug\MainWindow.g.cs
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\obj\Debug\App.g.cs
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo_MarkupCompile.cache
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo_MarkupCompile.lref
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\obj\Debug\MainWindow.baml
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.g.resources
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.Properties.Resources.resources
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.csproj.GenerateResource.Cache
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.csproj.CoreCompileInputs.cache
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.exe
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\obj\Debug\ExperimentTwo.pdb
+F:\大二下\C#\实验234的说明文档\ExperimentTwo\ExperimentTwo\bin\Debug\DynamicDataDisplay.dll
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\bin\Debug\ExperimentTwo.exe.config
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\bin\Debug\ExperimentTwo.exe
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\bin\Debug\ExperimentTwo.pdb
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.csprojResolveAssemblyReference.cache
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\obj\Debug\MainWindow.g.cs
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\obj\Debug\App.g.cs
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo_MarkupCompile.cache
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo_MarkupCompile.lref
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\obj\Debug\MainWindow.baml
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.g.resources
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.Properties.Resources.resources
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.csproj.GenerateResource.Cache
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.csproj.CoreCompileInputs.cache
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.exe
+E:\VS Code\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.pdb
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\ExperimentTwo.exe.config
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\ExperimentTwo.exe
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\ExperimentTwo.pdb
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.csprojAssemblyReference.cache
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\obj\Debug\MainWindow.g.cs
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\obj\Debug\App.g.cs
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo_MarkupCompile.cache
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo_MarkupCompile.lref
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\obj\Debug\MainWindow.baml
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.g.resources
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.Properties.Resources.resources
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.csproj.GenerateResource.cache
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.csproj.CoreCompileInputs.cache
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.csproj.CopyComplete
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.exe
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\obj\Debug\ExperimentTwo.pdb
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\ZedGraph.dll
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\ZedGraph.xml
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\de\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\es\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\fr\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\hu\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\it\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\ja\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\pt\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\ru\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\sk\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\sv\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\tr\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\zh-cn\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\ExperimentTwo_new\ExperimentTwo\bin\Debug\zh-tw\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\ExperimentTwo.exe.config
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\ExperimentTwo.exe
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\ExperimentTwo.pdb
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\ZedGraph.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\ZedGraph.xml
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\de\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\es\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\fr\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\hu\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\it\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\ja\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\pt\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\ru\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\sk\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\sv\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\tr\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\zh-cn\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\bin\Debug\zh-tw\ZedGraph.resources.dll
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\obj\Debug\ExperimentTwo.csprojAssemblyReference.cache
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\obj\Debug\MainWindow.g.cs
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\obj\Debug\App.g.cs
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\obj\Debug\ExperimentTwo_MarkupCompile.cache
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\obj\Debug\ExperimentTwo_MarkupCompile.lref
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\obj\Debug\MainWindow.baml
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\obj\Debug\ExperimentTwo.g.resources
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\obj\Debug\ExperimentTwo.Properties.Resources.resources
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\obj\Debug\ExperimentTwo.csproj.GenerateResource.cache
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\obj\Debug\ExperimentTwo.csproj.CoreCompileInputs.cache
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\obj\Debug\ExperimentTwo.csproj.CopyComplete
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\obj\Debug\ExperimentTwo.exe
+C:\Users\CQY\Desktop\WpfSerialPort\ExperimentTwo\obj\Debug\ExperimentTwo.pdb

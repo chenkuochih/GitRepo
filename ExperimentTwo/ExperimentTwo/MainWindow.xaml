@@ -1,0 +1,66 @@
+﻿<Window x:Class="ExperimentTwo.MainWindow"
+        xmlns:d3="http://research.microsoft.com/DynamicDataDisplay/1.0"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExperimentTwo"
+         xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"    
+        xmlns:wf ="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:zedgraph="clr-namespace:ZedGraph;assembly=ZedGraph"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="638.6">
+    <Viewbox>
+
+
+        <Grid Margin="0,0,-6.6,-29.2" Height="410" Width="639">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="67*"/>
+                <RowDefinition Height="13*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition Width="318*"/>
+                <ColumnDefinition Width="317*"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="ComboBox_Port" HorizontalAlignment="Left" Height="22" Margin="35,29,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" SelectionChanged="ComboBox_SelectionChanged" >
+                <ComboBoxItem Content="选择串口名称" IsSelected="True" IsEnabled="False"/>
+            </ComboBox>
+            <ComboBox x:Name="ComboBox_Rate" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="35,81,0,0" VerticalAlignment="Top" Width="120" Height="23" SelectionChanged="ComboBox_SelectionChanged_1">
+                <ComboBoxItem Content="选择通信速率" IsSelected="True" IsEnabled="False"/>
+            </ComboBox>
+            <Button x:Name="connect" Grid.ColumnSpan="2" Content="连接" HorizontalAlignment="Left" Height="19" Margin="25,128,0,0" VerticalAlignment="Top" Width="54" Click="Button_Click_2"/>
+            <Button x:Name="dispose" Grid.ColumnSpan="2" Content="断开" HorizontalAlignment="Left" Height="19" Margin="103,128,0,0" VerticalAlignment="Top" Width="54" Click="Button_Click_3"/>
+            <Label Grid.ColumnSpan="2" Content="显示温度" HorizontalAlignment="Left" Height="24" Margin="179,161,0,0" VerticalAlignment="Top" Width="67"/>
+            <Label Grid.ColumnSpan="3" Content="显示光强" HorizontalAlignment="Left" Height="24" Margin="305,161,0,0" VerticalAlignment="Top" Width="61"/>
+            <Slider x:Name="red_slider" HorizontalAlignment="Left" Height="22" Margin="182,17,0,0" VerticalAlignment="Top" Width="94" Grid.Column="2"  Maximum="255" TickFrequency="10"/>
+            <Label Content="红灯" HorizontalAlignment="Left" Height="27" Margin="128,12,0,0" VerticalAlignment="Top" Width="49" Grid.Column="2"/>
+            <Label Content="颜色块显示LED明暗" HorizontalAlignment="Left" Height="27" Margin="164,153,0,0" VerticalAlignment="Top" Width="127" Grid.Column="2"/>
+            <Button x:Name="send" Content="发送" HorizontalAlignment="Left" Height="20" Margin="199,185,0,0" VerticalAlignment="Top" Width="50" Grid.Column="2" Click="Button_Click_4"/>
+            <Button x:Name="start_picture" Content="开始绘图" HorizontalAlignment="Left" Height="27" Margin="88,9.8,0,0" VerticalAlignment="Top" Width="56" Click="Start_picture_Click" Grid.Column="1" RenderTransformOrigin="0.541,1.952" Grid.Row="1"/>
+            <Button x:Name="end_picture" Content="结束绘图" HorizontalAlignment="Left" Height="27" Margin="0,9.8,0,0" VerticalAlignment="Top" Width="54" Click="End_picture_Click" Grid.Column="2" RenderTransformOrigin="0.36,-2.208" Grid.Row="1"/>
+            <TextBox x:Name="light_textBox" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Margin="46,160,0,0" Grid.Column="2" FontFamily="/arduino_wpf;component/#Quartz" FontSize="18" TextChanged="TextBox_TextChanged"/>
+            <TextBox x:Name="temp_textBox" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="51" Margin="235,160,0,0" RenderTransformOrigin="0.427,0.547" FontFamily="/arduino_wpf;component/#Quartz" FontSize="18" TextChanged="TextBox_TextChanged"/>
+            <Label Content="绿灯" Grid.Column="2" HorizontalAlignment="Left" Margin="129,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.512,1.561"/>
+            <Slider x:Name="green_silder" Grid.Column="2" HorizontalAlignment="Left" Margin="182,47,0,0" VerticalAlignment="Top" Width="94" Maximum="255" TickFrequency="10" />
+            <Label Content="蓝灯" Grid.Column="2" HorizontalAlignment="Left" Margin="129,78,0,0" VerticalAlignment="Top"/>
+            <Slider x:Name="blue_slider" Grid.Column="2" HorizontalAlignment="Left" Margin="182,81,0,0" VerticalAlignment="Top" Width="94" Maximum="255" TickFrequency="10" />
+            <Label Content="白灯" Grid.Column="2" HorizontalAlignment="Left" Margin="129,117,0,0" VerticalAlignment="Top"/>
+            <Slider x:Name="white_slider" Grid.Column="2" HorizontalAlignment="Left" Margin="182,117,0,0" VerticalAlignment="Top" Width="94" Maximum="255" TickFrequency="10"/>
+            <TextBox Grid.ColumnSpan="2" Name="sent" HorizontalAlignment="Left" Height="70" Margin="200,29,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="96" RenderTransformOrigin="0.5,0.5"/>
+            <Button Grid.ColumnSpan="2" Name="TiJiao" Content="提交" HorizontalAlignment="Left" Margin="251,114,0,0" VerticalAlignment="Top" Width="45" Height="21" Click="TiJiao_Click"/>
+            <TextBox Grid.Column="1" Name="jieshou"  IsEnabled="True" TextChanged="Jieshou_TextChanged" HorizontalAlignment="Left" Height="106" Margin="305,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Grid.ColumnSpan="2"/>
+            <Grid Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="156" Margin="10,205,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="451">
+                <WindowsFormsHost Margin="0,-10,244,10">
+                    <zedgraph:ZedGraphControl x:Name="graph1"></zedgraph:ZedGraphControl>
+                </WindowsFormsHost>
+                <WindowsFormsHost Margin="235,-10,10,10">
+                    <zedgraph:ZedGraphControl x:Name="graph2"></zedgraph:ZedGraphControl>
+                </WindowsFormsHost>
+            </Grid>
+            <Ellipse Grid.Column="2" Name="color_change" Fill="#0000ff" HorizontalAlignment="Left" Height="25" Margin="140,153,0,0" Stroke="White" VerticalAlignment="Top" Width="25"/>
+            <Button x:Name="log_start" Content="log开始" HorizontalAlignment="Left" Height="27" Margin="164,281,0,0" VerticalAlignment="Top" Width="56" Click="Log_start_Click" Grid.Column="2" RenderTransformOrigin="0.641,0.113"/>
+            <Button x:Name="log_end" Content="log结束" HorizontalAlignment="Left" Height="27" Margin="237,281,0,0" VerticalAlignment="Top" Width="54" Click="Log_end_Click" Grid.Column="2"/>
+        </Grid>
+    </Viewbox>
+</Window>
