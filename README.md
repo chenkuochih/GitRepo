@@ -1,3 +1,350 @@
+# 第四次实验
+## 功能概述 <br />
+    1)完成WPF的APP应用界面，使用相对布局方式，界面要基本保证用户体验良好、外观整洁、布局合理匀称。此处布局仅供参考，同学需改善界面的用户体验。
+    2)能够依据MIDI通信协议的数据传输定义（参照机组原理的实验3定义的传输格式），APP能对MIDI格式的数据进行接收与发送，并在PC端实时显示其16进制通信数值、物理值和是实时图形曲线。
+    3)能够实现通过MIDI协议，控制Arduino板上PWM输出端，对LED明暗进行控制。
+    4)能够以csv格式或json文件格式记录MIDI数据的结果。
+    5)实现有创意的Arduino-MIDI控制器程序
+## 项目特色 <br />
+    1) 完成了WPF的APP应用界面，使用相对布局方式，界面保证了用户体验良好、外观整洁、布局合理匀称。
+    2) 能够依据MIDI通信协议的数据传输定义，APP能对MIDI格式的数据进行接收与发送，并在PC端实时显示其16进制通信数值、物理值和是实时图形曲线。
+    3) 能够实现通过MIDI协议，控制Arduino板上PWM输出端，对LED明暗进行控制。
+    4) 能够以csv格式或json文件格式记录数据。
+    
+## 代码总量：820行 <br />
+## 工作时间：7天 <br />
+## 知识点总结图 <br />
+![知识点总结]
+(https://github.com/chenkuochih/GitRepo/tree/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE)
+## 结论 <br />
+实验过程：
+-------------
+ combobox显示所有pc机上的串口名
+-------------
+    //portsArray数组获得所有串口列表  
+    string[] portsArray = SerialPort.GetPortNames();
+    
+    private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string port = this.ComboBox_Port.SelectedItem.ToString();
+                string rate = this.ComboBox_Rate.SelectedItem.ToString();
+                serialPort.Parity = Parity.None;
+                serialPort.StopBits = StopBits.One;
+                serialPort.DataBits = 8;
+                serialPort.Handshake = Handshake.None;
+                serialPort.RtsEnable = false;
+                //serialPort.Encoding = Encoding.ASCII;
+                serialPort.PortName = port;
+                serialPort.BaudRate = int.Parse(rate);
+                serialPort.ReceivedBytesThreshold = 1;
+                serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+                if (!serialPort.IsOpen)
+                {
+                    serialPort.Open();
+                    MessageBox.Show("连接成功");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+ （1）显示返回的温度与光强实时信息（2）以ListView显示发送的数据和返回的实时信息。
+-------------
+    private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+        {
+            if (serialPort == null)
+            {
+                return;
+            }
+            int numOfByte = serialPort.BytesToRead;
+            for (int i = 0; i < numOfByte; i++)
+            {
+                byte rxdata = (byte)serialPort.ReadByte();
+                data1[index] = rxdata;
+                if ((rxdata & 0x80) != 0)//收到命令
+                {
+                    if (index != 0)
+                    {
+                        index = 0;
+                    }
+                    data1[0] = rxdata;
+                    index++;
+                }
+                else if (index != 0 && (data1[0] & 0x80) != 0)
+                {
+                    if (index < 3)
+                    {
+                        data1[index] = rxdata;
+                        index++;
+                    }
+                    if (index == 3)
+                    {
+                        if (data1[0] == 0xF9)
+                        {
+                            string str1 = ((data1[1] << 7) + data1[2]).ToString();
+                            Dispatcher.BeginInvoke(new Action(delegate
+                            {
+                                jieshou.Text = str1;
+                            }));
+
+                        }
+                        index = 0;
+                    }
+                }
+                else if (data1[index] == 0xa)
+                {
+                    Byte[] readBuffer = new Byte[numOfByte-1];
+                    serialPort.Read(readBuffer, 0, numOfByte-1);
+                    
+                    str = Encoding.Default.GetString(readBuffer);
+                    String[] words = str.Split('\r');
+                    string str2 = words[0];
+                    Dispatcher.BeginInvoke(new Action(delegate
+                    {
+                        temp_textBox.Text = str2;
+                        jieshou.Text += System.DateTime.Now.ToString() + "     温度:" + str2 + "\r\n";
+                        if (jieshou.Text.Length > 500)
+                        {
+                            jieshou.Text = "";
+                        }
+                        if(log2 == 1)
+                        {
+                            writeFile(texts);
+                        }
+                    }));
+                    break;
+                }
+                else if (data1[index] == 0xb)
+                {
+                    Byte[] readBuffer = new Byte[numOfByte - 1];
+                    serialPort.Read(readBuffer, 0, numOfByte - 1);
+                    str = Encoding.Default.GetString(readBuffer);
+                    String[] words = str.Split('\r');
+                    string str2 = words[0];
+                    Dispatcher.BeginInvoke(new Action(delegate
+                    {
+                        light_textBox.Text = str2;
+                        jieshou.Text += System.DateTime.Now.ToString() + "     光强：" + str2 + "\r\n";
+                        if (jieshou.Text.Length > 500)
+                        {
+                            jieshou.Text = "";
+                        }
+                    }));
+                    break;
+                }
+
+            }
+        }
+ 
+
+ 利用滑块(slider)控制Arduino板上的PWM输出端，实现四种LED灯的明暗控制
+-------------
+    byte val_red = (byte)red_slider.Value;
+    byte val_green = (byte)green_silder.Value;
+    byte val_blue = (byte)blue_slider.Value;
+    byte val_white = (byte)white_slider.Value;
+    MessageBox.Show("红灯亮度： " + val_red.ToString() + "\n"
+                + "绿灯亮度： " + val_green.ToString() + "\n"
+                + "蓝灯亮度： " + val_blue.ToString() + "\n"
+                + "白灯亮度： " + val_white.ToString() + "\n");
+    byte[] byte1 = new byte[2];
+    byte[] byte2 = new byte[2];
+    byte[] byte3 = new byte[2];
+    byte[] byte4 = new byte[2];
+    int num1 =9;
+    byte1[0] = (byte)num1;
+    byte1[1] = val_red;
+
+    int num2 = 10;
+    byte2[0] = (byte)num2;
+    byte2[1] = val_green;
+
+    int num3 = 6;
+    byte3[0] = (byte)num3;
+    byte3[1] = val_white;
+
+    int num4 = 5;
+    byte4[0] = (byte)num4;
+    byte4[1] = val_blue;
+
+    serialPort.Write(byte1, 0, 2);
+    Thread.Sleep(1000);
+    serialPort.Write(byte2, 0, 2);
+    Thread.Sleep(1000);
+    serialPort.Write(byte3, 0, 2);
+    Thread.Sleep(1000);
+    serialPort.Write(byte4, 0, 2);
+    Thread.Sleep(1000);
+
+在界面的○处显示RGB混合色
+-------------
+    int colors = ((int)red_slider.Value << 16) + ((int)green_silder.Value << 8) + (int)blue_slider.Value;
+    Color cl = Color.FromArgb(255, val_red, val_green, val_blue);
+    Brush brush = new SolidColorBrush(cl);
+    color_change.Fill = brush;
+    
+显示出Arduino上温度、光强随时间变化的曲线图
+-------------
+    void AddDataPoint(object sender, EventArgs e)
+        {
+            if (log1 == 1)
+            {
+
+                //确保CurveList不为空
+                if (graph1.GraphPane.CurveList.Count <= 0) return;
+                // Get the  first CurveItem in the graph 
+                //取Graph第一个曲线，也就是第一步:在 GraphPane.CurveList 集合中查找 CurveItem 
+                for (int idxList = 0; idxList < graph1.GraphPane.CurveList.Count; idxList++)
+                {
+                    LineItem curve = graph1.GraphPane.CurveList[idxList] as LineItem;
+                    if (curve == null) return;
+                    // Get the PointPairList 
+                    //第二步:在CurveItem中访问PointPairList(或者其它的IPointList)，根据自己的需要增加新数据或修改已存在的数据
+                    IPointListEdit list = curve.Points as IPointListEdit;
+                    // If this is null, it means the reference at curve.Points does not  
+                    // support IPointListEdit, so we won't be able to modify it 
+                    if (list == null) return;
+
+                    // Time is measured in seconds 
+                    double time = (Environment.TickCount - tickStart) / 1000.0;
+                    // 3 seconds per cycle 
+                    list.Add(time, System.Convert.ToDouble(temp_textBox.Text));
+                    // Keep the X scale at a rolling 30 second interval, with one 
+                    // major step between the max X value and the end of the axis 
+                    Scale xScale = graph1.GraphPane.XAxis.Scale;
+                    if (time > xScale.Max - xScale.MajorStep)
+                    {
+                        xScale.Max = time + xScale.MajorStep;
+                        xScale.Min = xScale.Max - 30.0;
+                    }
+                }
+                // Make sure the Y axis is rescaled to accommodate actual data 
+                //第三步:调用ZedGraphControl.AxisChange()方法更新X和Y轴的范围
+
+                graph1.AxisChange(); // Force a redraw  
+                                     //第四步:调用Form.Invalidate()方法更新图表
+                graph1.Invalidate();
+            }
+        }
+        void AddDataPoint2(object sender, EventArgs e)
+        {
+            if (log1 == 1)
+            {
+                if (graph2.GraphPane.CurveList.Count <= 0) return;
+
+                for (int idxList = 0; idxList < graph2.GraphPane.CurveList.Count; idxList++)
+                {
+                    LineItem curve = graph2.GraphPane.CurveList[idxList] as LineItem;
+                    if (curve == null) return;
+                    IPointListEdit list = curve.Points as IPointListEdit;
+
+                    if (list == null) return;
+
+                    double time = (Environment.TickCount - tickStart) / 1000.0;
+                    list.Add(time, System.Convert.ToDouble(light_textBox.Text));
+
+                    Scale xScale = graph2.GraphPane.XAxis.Scale;
+                    if (time > xScale.Max - xScale.MajorStep)
+                    {
+                        xScale.Max = time + xScale.MajorStep;
+                        xScale.Min = xScale.Max - 30.0;
+                    }
+
+                }
+                graph2.AxisChange(); // Force a redraw  
+                graph2.Invalidate();
+            }
+            
+        }
+
+
+        private void Jieshou_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            jieshou.SelectionStart = jieshou.Text.Length;
+            jieshou.ScrollToEnd();
+        }
+
+        private void Start_picture_Click(object sender, RoutedEventArgs e)
+        {
+            log1 = 1;
+            timer1.Start();
+            timer2.Start();
+        }
+        
+记录实时信息的log文件名输入FileDialog
+-------------
+    public void openFile()
+        {
+            var saveFileDialog = new Microsoft.Win32.SaveFileDialog();
+            saveFileDialog.Filter = "TXT File(*.txt)|*.txt";
+            var result = saveFileDialog.ShowDialog();
+            if (result == true)
+            {
+                FileStream savefs = new FileStream(saveFileDialog.FileName, FileMode.Create);
+                StreamWriter savesw = new StreamWriter(savefs);
+                savesw.Flush();
+                savesw.Close();
+            }
+            //创建一个打开文件式的对话框
+            OpenFileDialog ofd = new OpenFileDialog();
+            //设置这个对话框的起始打开路径
+            ofd.InitialDirectory = @"E:\";
+            //设置打开的文件的类型，注意过滤器的语法
+            ofd.Filter = "文本文件(*.txt)|*.txt|所有文件(*.*)|*.*";//设置默认文件类型显示顺序
+            //调用ShowDialog()方法显示该对话框，该方法的返回值代表用户是否点击了确定按钮
+            if (ofd.ShowDialog() == true)
+            {
+                //获得文件路径	
+                localFilePath = ofd.FileName.ToString();
+                //获取文件路径，不带文件名	
+                //FilePath = localFilePath.Substring(0, localFilePath.LastIndexOf("\\"));
+
+                //获取文件名，带后缀名，不带路径	
+                fileNameWithSuffix = localFilePath.Substring(localFilePath.LastIndexOf("\\") + 1);
+
+                //去除文件后缀名	
+                fileNameWithoutSuffix = fileNameWithSuffix.Substring(0, fileNameWithSuffix.LastIndexOf("."));
+                //在文件名前加上时间	
+                fileNameWithTime = DateTime.Now.ToString("yyyy-MM-dd ") + ofd.FileName; 
+                //在文件名里加字符	
+                newFileName = localFilePath.Insert(1, "Tets");
+            }
+            else
+            {
+                MessageBox.Show("没有选择文件");
+            }
+        }
+实验结果：
+------------
+###  combobox显示所有pc机上的串口名
+![combobox显示所有pc机上的串口名](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E5%9B%9B%E3%80%91%E6%98%BE%E7%A4%BA%E4%B8%B2%E5%8F%A3%E5%90%8D.png)
+
+### 显示返回的温度与光强实时信息
+![显示返回的温度与光强实时信息](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E5%9B%9B%E3%80%91%E6%98%BE%E7%A4%BA%E6%B8%A9%E5%BA%A6%E5%85%89%E5%BC%BA.png)
+
+### 利用滑块(slider)控制Arduino板上的PWM输出端，实现四种LED灯的明暗控制
+![滑块(slider)控制](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C4%E3%80%91%E6%BB%91%E5%9D%97%E6%8E%A7%E5%88%B6.png)
+
+### 在界面的○处显示RGB混合色
+![在界面的○处显示RGB混合色](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E5%9B%9B%E3%80%91%E9%A2%9C%E8%89%B2RGB.png)
+
+###  显示出Arduino上温度、光强随时间变化的曲线图
+![显示出Arduino上温度、光强随时间变化的曲线图](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%89%E3%80%91%E6%8E%A7%E4%BB%B6%E4%BD%8D%E7%BD%AE.png)
+
+### 以ListView显示发送的数据和返回的实时信息。
+![显示返回的温度与光强实时信息](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E5%9B%9B%E3%80%91%E8%BF%94%E5%9B%9E%E5%AE%9E%E6%97%B6%E4%BF%A1%E6%81%AF.png)
+
+### 记录实时信息的log文件名输入FileDialog
+![记录实时信息的log文件名输入FileDialog](https://github.com/chenkuochih/GitRepo/blob/master/运行结果截图/【实验四】打开文件.png)
+![记录实时信息的log文件名输入FileDialog](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E5%9B%9B%E3%80%91%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6.png)
+![记录实时信息的log文件名输入FileDialog](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E5%9B%9B%E3%80%91%E7%94%9F%E6%88%90%E7%9A%84json%E6%96%87%E4%BB%B6.png)
+
+
+
 # 第三次实验
 ## 功能概述 <br />
     1) 使用WPF Midi Band提供的源程序，在Visual Studio中建立相应的解决方案。
