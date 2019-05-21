@@ -15,7 +15,7 @@
 ## 工作时间：7天 <br />
 ## 知识点总结图 <br />
 ![知识点总结]
-(https://github.com/chenkuochih/GitRepo/tree/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE)
+(https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E5%9B%9B%E3%80%91%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.png)
 ## 结论 <br />
 实验过程：
 -------------
