@@ -324,7 +324,7 @@
 ![combobox显示所有pc机上的串口名](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E5%9B%9B%E3%80%91%E6%98%BE%E7%A4%BA%E4%B8%B2%E5%8F%A3%E5%90%8D.png)
 
 ### 显示返回的温度与光强实时信息
-![显示返回的温度与光强实时信息](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E5%9B%9B%E3%80%91%E6%98%BE%E7%A4%BA%E6%B8%A9%E5%BA%A6%E5%85%89%E5%BC%BA.png)
+![显示返回的温度与光强实时信息](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E5%9B%9B%E3%80%91%E8%BF%94%E5%9B%9E%E7%9A%84%E6%B8%A9%E5%BA%A6%E4%B8%8E%E5%85%89%E5%BC%BA.png)
 
 ### 利用滑块(slider)控制Arduino板上的PWM输出端，实现四种LED灯的明暗控制
 ![滑块(slider)控制](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C4%E3%80%91%E6%BB%91%E5%9D%97%E6%8E%A7%E5%88%B6.png)
@@ -333,7 +333,7 @@
 ![在界面的○处显示RGB混合色](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E5%9B%9B%E3%80%91%E9%A2%9C%E8%89%B2RGB.png)
 
 ###  显示出Arduino上温度、光强随时间变化的曲线图
-![显示出Arduino上温度、光强随时间变化的曲线图](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E4%B8%89%E3%80%91%E6%8E%A7%E4%BB%B6%E4%BD%8D%E7%BD%AE.png)
+![显示出Arduino上温度、光强随时间变化的曲线图](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E5%9B%9B%E3%80%91%E6%98%BE%E7%A4%BA%E6%B8%A9%E5%BA%A6%E5%85%89%E5%BC%BA.png)
 
 ### 以ListView显示发送的数据和返回的实时信息。
 ![显示返回的温度与光强实时信息](https://github.com/chenkuochih/GitRepo/blob/master/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E6%88%AA%E5%9B%BE/%E3%80%90%E5%AE%9E%E9%AA%8C%E5%9B%9B%E3%80%91%E8%BF%94%E5%9B%9E%E5%AE%9E%E6%97%B6%E4%BF%A1%E6%81%AF.png)
